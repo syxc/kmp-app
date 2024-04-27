@@ -36,6 +36,9 @@ include(":androidApp")
 include(":composeApp")
 include(":shared")
 
+/* Encountering the “Unable to make progress running work” Error in Gradle? */
+gradle.startParameter.excludedTaskNames.addAll(listOf(":build-logic:convention:testClasses"))
+
 check(JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17)) {
   "This project needs to be run with Java 17 or higher (found: ${JavaVersion.current()})."
 }
