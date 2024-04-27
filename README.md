@@ -1,3 +1,5 @@
+[![CI](https://github.com/syxc/kmp-app/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/syxc/kmp-app/actions/workflows/build.yml)
+
 This is a Kotlin Multiplatform project targeting Android, iOS, Web.
 
 * `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
