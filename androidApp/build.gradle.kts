@@ -83,7 +83,7 @@ android {
 
 dependencies {
   implementation(projects.shared)
-  implementation(projects.composeApp)
+  implementation(projects.sharedCompose)
   implementation(libs.compose.ui)
   implementation(libs.compose.ui.tooling.preview)
   implementation(libs.compose.material3)

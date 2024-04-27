@@ -33,7 +33,7 @@ dependencyResolutionManagement {
 rootProject.name = "kmp-app"
 
 include(":androidApp")
-include(":composeApp")
+include(":shared-compose")
 include(":shared")
 
 /* Encountering the “Unable to make progress running work” Error in Gradle? */
