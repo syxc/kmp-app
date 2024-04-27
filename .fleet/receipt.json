@@ -1,0 +1,23 @@
+{
+  "spec": {
+    "template_id": "kmt",
+    "targets": {
+      "android": {
+        "ui": [
+          "compose"
+        ]
+      },
+      "ios": {
+        "ui": [
+          "swiftui"
+        ]
+      },
+      "web": {
+        "ui": [
+          "compose"
+        ]
+      }
+    }
+  },
+  "timestamp": "2024-04-27T11:53:46.849509407Z"
+}
