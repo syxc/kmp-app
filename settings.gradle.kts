@@ -38,7 +38,7 @@ dependencyResolutionManagement {
 rootProject.name = "kmp-app"
 
 include(":androidApp")
-include(":shared-compose")
+// include(":shared-compose")
 include(":shared")
 // redwood
 include(":redwood:schema")
