@@ -10,9 +10,9 @@ import app.cash.redwood.layout.api.Constraint
 import app.cash.redwood.layout.api.CrossAxisAlignment
 import app.cash.redwood.layout.api.MainAxisAlignment
 import app.cash.redwood.layout.compose.Column
-import com.ding1ding.app.shared.redwood.compose.Button
-import com.ding1ding.app.shared.redwood.compose.Text
 import com.github.app.shared.core.StringList
+import com.github.app.shared.redwood.compose.Button
+import com.github.app.shared.redwood.compose.Text
 
 @Composable
 fun Counter(

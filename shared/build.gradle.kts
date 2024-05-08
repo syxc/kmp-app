@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
+
 plugins {
   alias(libs.plugins.kotlin.multiplatform)
   alias(libs.plugins.kotlin.cocoapods)
@@ -21,6 +24,18 @@ kotlin {
 //    }
 //  }
 
+  // https://kotlinlang.org/docs/multiplatform-expect-actual.html#expected-and-actual-classes
+  // To suppress this warning about usage of expected and actual classes
+  @OptIn(ExperimentalKotlinGradlePluginApi::class)
+  compilerOptions {
+    freeCompilerArgs.add("-Xexpect-actual-classes")
+  }
+
+  androidTarget {
+    @Suppress("OPT_IN_USAGE")
+    unitTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
+  }
+
   androidTarget {
     compilations.all {
       kotlinOptions {
@@ -41,15 +56,23 @@ kotlin {
     podfile = project.file("../iosApp/Podfile")
     framework {
       baseName = "SharedKit"
-      isStatic = false // SwiftUI preview requires dynamic framework
+      isStatic = true // SwiftUI preview requires dynamic framework
       binaryOptions["bundleId"] = "com.github.app.shared"
-      extraSpecAttributes["swift_version"] = "\"5.0\"" // <- SKIE Needs this!
+      extraSpecAttributes["swift_version"] = "\"5.7.3\"" // <- SKIE Needs this!
       export(moko.resources)
       export("dev.icerock.moko:graphics:0.9.0")
     }
   }
 
   sourceSets {
+    all {
+      languageSettings.apply {
+        optIn("kotlin.RequiresOptIn")
+        optIn("kotlinx.coroutines.ExperimentalCoroutinesApi")
+        optIn("kotlin.time.ExperimentalTime")
+      }
+    }
+
     commonMain.dependencies {
       // Redwood
       implementation(libs.redwood.compose)
@@ -82,7 +105,7 @@ kotlin {
 }
 
 multiplatformResources {
-  resourcesPackage.set("com.github.app.redwood.shared")
+  resourcesPackage.set("com.github.app.shared")
 }
 
 android {
