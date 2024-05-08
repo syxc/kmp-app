@@ -28,12 +28,6 @@ androidx-material = { group = "com.google.android.material", name = "material", 
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 
-#compose-ui = { module = "androidx.compose.ui:ui", version.ref = "jetpack-compose" }
-#compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "jetpack-compose" }
-#compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "jetpack-compose" }
-#compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "jetpack-compose" }
-#compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
-
 # -------- JetBrains Compose: https://github.com/JetBrains/compose-multiplatform/releases --------
 jetbrains-compose-compiler = "org.jetbrains.compose.compiler:compiler:1.5.10.1"
 jetbrains-compose-gradlePlugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "jetbrains-compose" }

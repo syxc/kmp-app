@@ -46,5 +46,5 @@ Pod::Spec.new do |spec|
             SCRIPT
         }
     ]
-    spec.swift_version = "5.0"
+    spec.swift_version = "5.7.3"
 end

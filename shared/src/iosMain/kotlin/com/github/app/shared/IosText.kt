@@ -1,7 +1,7 @@
 package com.github.app.shared
 
 import app.cash.redwood.Modifier
-import com.ding1ding.app.shared.redwood.widget.Text
+import com.github.app.shared.redwood.widget.Text
 import platform.UIKit.NSTextAlignmentCenter
 import platform.UIKit.UIColor
 import platform.UIKit.UILabel

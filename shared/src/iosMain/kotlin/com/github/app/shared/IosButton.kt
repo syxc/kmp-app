@@ -1,7 +1,7 @@
 package com.github.app.shared
 
 import app.cash.redwood.Modifier
-import com.ding1ding.app.shared.redwood.widget.Button
+import com.github.app.shared.redwood.widget.Button
 import kotlinx.cinterop.BetaInteropApi
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.ObjCAction

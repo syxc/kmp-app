@@ -4,10 +4,8 @@ import app.cash.redwood.compose.DisplayLinkClock
 import app.cash.redwood.compose.RedwoodComposition
 import app.cash.redwood.layout.uiview.UIViewRedwoodLayoutWidgetFactory
 import app.cash.redwood.widget.RedwoodUIView
-import com.ding1ding.app.shared.redwood.widget.SchemaWidgetSystem
-import com.github.app.redwood.shared.MR
 import com.github.app.shared.core.StringList
-import dev.icerock.moko.resources.desc.desc
+import com.github.app.shared.redwood.widget.SchemaWidgetSystem
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.plus
@@ -31,11 +29,14 @@ class CounterViewControllerDelegate(root: UIStackView) {
       )
     )
 
-    val labelCount = MR.strings.label_count.desc().localized()
+    composition.setContent {
+      Counter(labels = StringList(listOfNotNull("Count:")))
+    }
 
+    /*val labelCount = MR.strings.label_count.desc().localized()
     composition.setContent {
       Counter(labels = StringList(listOfNotNull(labelCount)))
-    }
+    }*/
   }
 
   fun dispose() {

@@ -28,14 +28,14 @@ plugins {
 }
 
 subprojects {
-  tasks.withType<JavaCompile>().all {
-    sourceCompatibility = JavaVersion.VERSION_11.toString()
-    targetCompatibility = JavaVersion.VERSION_11.toString()
+  tasks.withType<JavaCompile> {
+    sourceCompatibility = Versions.java.toString()
+    targetCompatibility = Versions.java.toString()
   }
 
-  tasks.withType<KotlinCompile>().all {
+  tasks.withType<KotlinCompile> {
     kotlinOptions {
-      jvmTarget = JavaVersion.VERSION_11.toString()
+      jvmTarget = Versions.java.toString()
     }
   }
 }
