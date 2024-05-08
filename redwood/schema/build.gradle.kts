@@ -8,5 +8,5 @@ dependencies {
 }
 
 redwoodSchema {
-  type.set("com.ding1ding.app.shared.redwood.Schema")
+  type.set("com.github.app.shared.redwood.Schema")
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<schema type="com.ding1ding.app.shared.redwood.Schema" version="1">
-  <widget tag="2" type="com.ding1ding.app.shared.redwood.Text">
+<schema type="com.github.app.shared.redwood.Schema" version="1">
+  <widget tag="2" type="com.github.app.shared.redwood.Text">
     <property name="text" tag="1" type="kotlin.String?" />
   </widget>
-  <widget tag="3" type="com.ding1ding.app.shared.redwood.Button">
+  <widget tag="3" type="com.github.app.shared.redwood.Button">
     <property name="text" tag="1" type="kotlin.String?" />
     <property name="enabled" tag="2" type="kotlin.Boolean" />
     <event name="onClick" nullable="true" tag="3" />

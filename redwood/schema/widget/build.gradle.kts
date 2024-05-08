@@ -30,7 +30,7 @@ kotlin {
 
 redwoodSchema {
   source.set(projects.redwood.schema)
-  type.set("com.ding1ding.app.shared.redwood.Schema")
+  type.set("com.github.app.shared.redwood.Schema")
 }
 
 /* task 'testClasses' not found in project */
