@@ -1,4 +1,4 @@
-package com.ding1ding.app.shared.redwood.composeui
+package com.github.app.shared.redwood.composeui
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
@@ -9,7 +9,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import app.cash.redwood.Modifier as RedwoodModifier
-import com.ding1ding.app.shared.redwood.widget.Button
+import com.github.app.shared.redwood.widget.Button
 
 internal class ComposeUiButton : Button<@Composable () -> Unit> {
   private var text by mutableStateOf("")

@@ -1,4 +1,4 @@
-package com.ding1ding.app.shared.redwood.composeui
+package com.github.app.shared.redwood.composeui
 
 import androidx.compose.ui.graphics.Color
 
