@@ -6,7 +6,7 @@
 //  Copyright © 2024 github.com. All rights reserved.
 //
 
-import SharedKit
+import shared
 import UIKit
 
 @main

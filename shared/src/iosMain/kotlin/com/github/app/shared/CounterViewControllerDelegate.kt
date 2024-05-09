@@ -6,6 +6,7 @@ import app.cash.redwood.layout.uiview.UIViewRedwoodLayoutWidgetFactory
 import app.cash.redwood.widget.RedwoodUIView
 import com.github.app.shared.core.StringList
 import com.github.app.shared.redwood.widget.SchemaWidgetSystem
+import dev.icerock.moko.resources.desc.desc
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.plus
@@ -29,14 +30,10 @@ class CounterViewControllerDelegate(root: UIStackView) {
       )
     )
 
-    composition.setContent {
-      Counter(labels = StringList(listOfNotNull("Count:")))
-    }
-
-    /*val labelCount = MR.strings.label_count.desc().localized()
+    val labelCount = MR.strings.label_count.desc().localized()
     composition.setContent {
       Counter(labels = StringList(listOfNotNull(labelCount)))
-    }*/
+    }
   }
 
   fun dispose() {

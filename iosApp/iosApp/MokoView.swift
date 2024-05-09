@@ -6,7 +6,7 @@
 //  Copyright © 2024 github.com. All rights reserved.
 //
 
-import SharedKit
+import shared
 import SwiftUI
 
 struct MokoView: View {
@@ -15,7 +15,7 @@ struct MokoView: View {
       Image(systemName: "swift")
         .font(.system(size: 200))
         .foregroundColor(.accentColor)
-      Text("Moko Reousce: \(IOSPlatform().name)")
+      Text("Moko Reousce: \(IOSPlatform().mokoText.desc().localized())")
     }
   }
 }

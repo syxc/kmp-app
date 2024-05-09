@@ -3,13 +3,12 @@ package com.github.app.shared
 import app.cash.redwood.Modifier
 import com.github.app.shared.redwood.widget.Text
 import platform.UIKit.NSTextAlignmentCenter
-import platform.UIKit.UIColor
 import platform.UIKit.UILabel
 import platform.UIKit.UIView
 
 class IosText : Text<UIView> {
   override val value = UILabel().apply {
-    textColor = UIColor.whiteColor // TODO why is this needed?
+    // textColor = UIColor.blackColor // TODO why is this needed?
     textAlignment = NSTextAlignmentCenter
   }
 

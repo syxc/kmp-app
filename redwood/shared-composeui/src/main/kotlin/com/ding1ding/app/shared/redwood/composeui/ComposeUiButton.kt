@@ -1,5 +1,6 @@
 package com.github.app.shared.redwood.composeui
 
+import app.cash.redwood.Modifier as RedwoodModifier
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -8,7 +9,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import app.cash.redwood.Modifier as RedwoodModifier
 import com.github.app.shared.redwood.widget.Button
 
 internal class ComposeUiButton : Button<@Composable () -> Unit> {

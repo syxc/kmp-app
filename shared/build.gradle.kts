@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+
 plugins {
   alias(libs.plugins.kotlin.multiplatform)
   alias(libs.plugins.kotlin.cocoapods)
@@ -7,6 +9,11 @@ plugins {
 }
 
 kotlin {
+  @OptIn(ExperimentalKotlinGradlePluginApi::class)
+  compilerOptions {
+    freeCompilerArgs.add("-Xexpect-actual-classes")
+  }
+
   androidTarget {
     compilations.all {
       kotlinOptions {
@@ -26,7 +33,7 @@ kotlin {
     ios.deploymentTarget = "14.0"
     podfile = project.file("../iosApp/Podfile")
     framework {
-      baseName = "SharedKit"
+      baseName = "shared"
       binaryOptions["bundleId"] = "com.github.app.shared"
       isStatic = true
       export(moko.resources)

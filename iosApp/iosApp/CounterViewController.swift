@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SharedKit
+import shared
 import UIKit
 
 class CounterViewController: UIViewController {
