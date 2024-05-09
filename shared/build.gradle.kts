@@ -1,6 +1,3 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
-
 plugins {
   alias(libs.plugins.kotlin.multiplatform)
   alias(libs.plugins.kotlin.cocoapods)
@@ -10,32 +7,6 @@ plugins {
 }
 
 kotlin {
-//  @OptIn(ExperimentalWasmDsl::class)
-//  wasmJs {
-//    browser {
-//      commonWebpackConfig {
-//        devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-//          static = (static ?: mutableListOf()).apply {
-//            // Serve sources to debug inside browser
-//            add(project.projectDir.path)
-//          }
-//        }
-//      }
-//    }
-//  }
-
-  // https://kotlinlang.org/docs/multiplatform-expect-actual.html#expected-and-actual-classes
-  // To suppress this warning about usage of expected and actual classes
-  @OptIn(ExperimentalKotlinGradlePluginApi::class)
-  compilerOptions {
-    freeCompilerArgs.add("-Xexpect-actual-classes")
-  }
-
-  androidTarget {
-    @Suppress("OPT_IN_USAGE")
-    unitTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
-  }
-
   androidTarget {
     compilations.all {
       kotlinOptions {
@@ -56,23 +27,14 @@ kotlin {
     podfile = project.file("../iosApp/Podfile")
     framework {
       baseName = "SharedKit"
-      isStatic = true // SwiftUI preview requires dynamic framework
       binaryOptions["bundleId"] = "com.github.app.shared"
-      extraSpecAttributes["swift_version"] = "\"5.7.3\"" // <- SKIE Needs this!
+      isStatic = true
       export(moko.resources)
       export("dev.icerock.moko:graphics:0.9.0")
     }
   }
 
   sourceSets {
-    all {
-      languageSettings.apply {
-        optIn("kotlin.RequiresOptIn")
-        optIn("kotlinx.coroutines.ExperimentalCoroutinesApi")
-        optIn("kotlin.time.ExperimentalTime")
-      }
-    }
-
     commonMain.dependencies {
       // Redwood
       implementation(libs.redwood.compose)
