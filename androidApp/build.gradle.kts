@@ -3,6 +3,7 @@ import java.util.Properties
 plugins {
   alias(libs.plugins.android.application)
   kotlin("android")
+  alias(libs.plugins.cashapp.redwood)
   id("com.github.build.logic")
 }
 
@@ -18,7 +19,9 @@ android {
   }
 
   buildFeatures {
-    compose = true
+    // The Redwood Gradle plugin cannot be applied to an Android project which enables Compose.
+    // compose = true
+    buildConfig = true
   }
 
   composeOptions {
@@ -83,10 +86,10 @@ android {
 
 dependencies {
   implementation(projects.shared)
-  implementation(projects.sharedCompose)
-  implementation(libs.compose.ui)
-  implementation(libs.compose.ui.tooling.preview)
-  implementation(libs.compose.material3)
+  // implementation(projects.sharedCompose)
+  implementation(libs.jetbrains.compose.ui)
+  implementation(libs.jetbrains.compose.ui.tooling.preview)
+  implementation(libs.jetbrains.compose.material3)
   implementation(libs.androidx.activity.compose)
-  debugImplementation(libs.compose.ui.tooling)
+  debugImplementation(libs.jetbrains.compose.ui.tooling)
 }

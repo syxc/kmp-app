@@ -45,7 +45,7 @@ kotlin {
     }
 
     androidMain.dependencies {
-      implementation(libs.compose.ui.tooling.preview)
+      implementation(libs.jetbrains.compose.ui.tooling.preview)
       implementation(libs.androidx.activity.compose)
     }
   }
@@ -82,7 +82,7 @@ android {
   }
 
   dependencies {
-    debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.jetbrains.compose.ui.tooling)
   }
 }
 

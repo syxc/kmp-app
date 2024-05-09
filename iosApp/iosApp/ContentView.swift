@@ -1,4 +1,4 @@
-import SharedKit
+import shared
 import SwiftUI
 
 struct ContentView: View {

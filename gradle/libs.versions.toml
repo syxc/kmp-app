@@ -1,6 +1,7 @@
 [versions]
 kotlin = "1.9.23"
 agp = "8.2.2"
+redwood = "0.10.0"
 
 androidx-activityCompose = "1.9.0"
 androidx-appcompat = "1.6.1"
@@ -27,11 +28,30 @@ androidx-material = { group = "com.google.android.material", name = "material", 
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 
-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "jetpack-compose" }
-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "jetpack-compose" }
-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "jetpack-compose" }
-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "jetpack-compose" }
-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
+# -------- JetBrains Compose: https://github.com/JetBrains/compose-multiplatform/releases --------
+jetbrains-compose-compiler = "org.jetbrains.compose.compiler:compiler:1.5.10.1"
+jetbrains-compose-gradlePlugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "jetbrains-compose" }
+jetbrains-compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "jetbrains-compose" }
+jetbrains-compose-runtime-saveable = { module = "org.jetbrains.compose.runtime:runtime-saveable", version.ref = "jetbrains-compose" }
+jetbrains-compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "jetbrains-compose" }
+jetbrains-compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "jetbrains-compose" }
+jetbrains-compose-ui-tooling = { module = "org.jetbrains.compose.ui:ui-tooling", version.ref = "jetbrains-compose" }
+jetbrains-compose-ui-tooling-preview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "jetbrains-compose" }
+jetbrains-compose-material = { module = "org.jetbrains.compose.material:material", version.ref = "jetbrains-compose" }
+jetbrains-compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "jetbrains-compose" }
+jetbrains-compose-animation = { module = "org.jetbrains.compose.animation:animation-core", version.ref = "jetbrains-compose" }
+jetbrains-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "jetbrains-compose" }
+
+# -------- redwood: https://github.com/cashapp/redwood --------
+redwood-compose = { module = "app.cash.redwood:redwood-compose", version.ref = "redwood" }
+redwood-composeui = { module = "app.cash.redwood:redwood-composeui", version.ref = "redwood" }
+redwood-widget-compose = { module = "app.cash.redwood:redwood-widget-compose", version.ref = "redwood" }
+redwood-layout-compose = { module = "app.cash.redwood:redwood-layout-compose", version.ref = "redwood" }
+redwood-layout-composeui = { module = "app.cash.redwood:redwood-layout-composeui", version.ref = "redwood" }
+redwood-layout-widget = { module = "app.cash.redwood:redwood-layout-widget", version.ref = "redwood" }
+redwood-layout-schema = { module = "app.cash.redwood:redwood-layout-schema", version.ref = "redwood" }
+redwood-layout-uiview = { module = "app.cash.redwood:redwood-layout-uiview", version.ref = "redwood" }
+redwood-layout-testing = { module = "app.cash.redwood:redwood-layout-testing", version.ref = "redwood" }
 
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
@@ -45,6 +65,8 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "jetbrains-compose" }
+
+cashapp-redwood = { id = "app.cash.redwood", version.ref = "redwood" }
 
 [bundles]
 asm = []

@@ -1,25 +1,17 @@
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
   alias(libs.plugins.kotlin.multiplatform)
   alias(libs.plugins.kotlin.cocoapods)
+  alias(libs.plugins.cashapp.redwood)
   alias(libs.plugins.android.library)
+  id("dev.icerock.mobile.multiplatform-resources")
 }
 
 kotlin {
-  @OptIn(ExperimentalWasmDsl::class)
-  wasmJs {
-    browser {
-      commonWebpackConfig {
-        devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-          static = (static ?: mutableListOf()).apply {
-            // Serve sources to debug inside browser
-            add(project.projectDir.path)
-          }
-        }
-      }
-    }
+  @OptIn(ExperimentalKotlinGradlePluginApi::class)
+  compilerOptions {
+    freeCompilerArgs.add("-Xexpect-actual-classes")
   }
 
   androidTarget {
@@ -41,32 +33,69 @@ kotlin {
     ios.deploymentTarget = "14.0"
     podfile = project.file("../iosApp/Podfile")
     framework {
-      baseName = "SharedKit"
-      isStatic = false // SwiftUI preview requires dynamic framework
+      baseName = "shared"
       binaryOptions["bundleId"] = "com.github.app.shared"
-      extraSpecAttributes["swift_version"] = "\"5.0\"" // <- SKIE Needs this!
+      isStatic = true
+      export(moko.resources)
+      export("dev.icerock.moko:graphics:0.9.0")
     }
   }
 
   sourceSets {
     commonMain.dependencies {
-      // put your multiplatform dependencies here
+      // Redwood
+      implementation(libs.redwood.compose)
+      implementation(libs.redwood.layout.compose)
+      implementation(project(":redwood:schema:widget"))
+      implementation(project(":redwood:schema:compose"))
+
+      // api(moko.resources.compose)
+      api(moko.resources)
     }
+
     commonTest.dependencies {
       implementation(libs.kotlin.test)
+      implementation(project(":redwood:schema:testing"))
+    }
+
+    androidMain.dependencies {
+      // Redwood
+      api(project(":redwood:schema:widget"))
+      api(project(":redwood:shared-composeui"))
+      api(libs.redwood.composeui)
+      api(libs.redwood.layout.composeui)
+    }
+
+    iosMain.dependencies {
+      // redwood
+      implementation(libs.redwood.layout.uiview)
     }
   }
+}
+
+multiplatformResources {
+  resourcesPackage.set("com.github.app.shared")
 }
 
 android {
   namespace = "com.github.app.shared"
   compileSdk = Versions.compileSdk
+
+  defaultConfig {
+    minSdk = Versions.minSdk
+  }
+
+  buildFeatures {
+    buildConfig = true
+  }
+
   compileOptions {
     sourceCompatibility = Versions.java
     targetCompatibility = Versions.java
   }
-  defaultConfig {
-    minSdk = Versions.minSdk
+
+  composeOptions {
+    kotlinCompilerExtensionVersion = Versions.composeCompiler
   }
 }
 
