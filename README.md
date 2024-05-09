@@ -1,5 +1,8 @@
 [![CI](https://github.com/syxc/kmp-app/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/syxc/kmp-app/actions/workflows/build.yml)
 
+- [redwood](https://github.com/cashapp/redwood)
+- [moko-resources](https://github.com/icerockdev/moko-resources)
+
 This is a Kotlin Multiplatform project targeting Android, iOS, Web.
 
 * `/shared-compose` is for code that will be shared across your Compose Multiplatform applications.

@@ -34,12 +34,12 @@ android {
     }
   }
 
-  val currentSigning =
-    if (rootProject.file("keystore.properties").exists()) {
-      val properties =
-        Properties().apply {
-          rootProject.file("keystore.properties").inputStream().use { load(it) }
-        }
+  val propertyFile = project.rootProject.file("keystore.properties")
+  val currentSigning = if (propertyFile.exists() && propertyFile.canRead()) {
+    val properties = Properties().apply {
+      propertyFile.inputStream().use { load(it) }
+    }
+    if (file(properties["storeFile"] as String).canRead()) {
       signingConfigs.create("release") {
         storeFile = file(properties["storeFile"] as String)
         storePassword = properties["storePassword"] as String
@@ -47,8 +47,12 @@ android {
         keyPassword = properties["keyPassword"] as String
       }
     } else {
+      println("Oops,storeFile can't read!")
       signingConfigs.getByName("debug")
     }
+  } else {
+    signingConfigs.getByName("debug")
+  }
 
   buildTypes {
     debug {
