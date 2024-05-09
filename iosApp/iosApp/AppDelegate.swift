@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let homeViewController = HomeViewController()
     homeViewController.title = "SwiftUI"
 
+    let mokoViewController = MokoViewController()
+    mokoViewController.title = "Moko Resource"
+
     let anotherViewController = CounterViewController()
     // anotherViewController.view.backgroundColor = .white
     anotherViewController.title = "Redwood UI"
@@ -35,10 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     tabBarController.viewControllers = [
       // Wrap them in a UINavigationController for the titles
       UINavigationController(rootViewController: homeViewController),
+      UINavigationController(rootViewController: mokoViewController),
       UINavigationController(rootViewController: anotherViewController),
     ]
     tabBarController.tabBar.items?[0].title = "Home"
-    tabBarController.tabBar.items?[1].title = "Redwood"
+    tabBarController.tabBar.items?[1].title = "Moko"
+    tabBarController.tabBar.items?[2].title = "Redwood"
 
     // Set the tab bar controller as the window's root view controller and make it visible
     window = UIWindow(frame: UIScreen.main.bounds)

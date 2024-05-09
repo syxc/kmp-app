@@ -27,8 +27,8 @@ class HomeViewController: UIViewController {
     NSLayoutConstraint.activate([
       swiftuiView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       swiftuiView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      swiftuiView.topAnchor.constraint(equalTo: view.topAnchor),
-      swiftuiView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      swiftuiView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      swiftuiView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
     ])
 
     // 4.Notify the child view controller that the move is complete.
