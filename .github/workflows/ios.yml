@@ -1,0 +1,68 @@
+name: iOS CI
+
+on:
+  push:
+    branches: [ "master" ]
+    paths-ignore:
+      - '.idea/**'
+      - '.gitattributes'
+      - '.github/**.json'
+      - '.gitignore'
+      - '.gitmodules'
+      - '**.md'
+      - 'LICENSE'
+      - 'NOTICE'
+      - docs
+      - androidApp
+  pull_request:
+    branches: [ "master" ]
+    paths-ignore:
+      - '.idea/**'
+      - '.gitattributes'
+      - '.github/**.json'
+      - '.gitignore'
+      - '.gitmodules'
+      - '**.md'
+      - 'LICENSE'
+      - 'NOTICE'
+      - docs
+      - androidApp
+
+# Cancel any current or previous job from the same PR
+concurrency:
+  group: ios-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+
+    # macos-latest
+    runs-on: macos-14
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'corretto'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: iosApp/Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+
+      - name: CocoaPod Install
+        run: |
+          ./gradlew :shared:generateDummyFramework
+          cd iosApp
+          pod install
+
+      - name: Build with Xcode
+        run: xcodebuild -workspace iosApp/iosApp.xcworkspace -scheme iosApp -configuration Debug -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15'

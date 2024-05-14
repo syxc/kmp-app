@@ -1,4 +1,4 @@
-name: CI
+name: Android CI
 
 on:
   push:
@@ -44,5 +44,6 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+
       - name: Build with Gradle
-        run: ./gradlew --scan --stacktrace $1 $2 build
+        run: ./gradlew --scan --stacktrace assembleDebug
