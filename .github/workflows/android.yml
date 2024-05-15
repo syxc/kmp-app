@@ -28,13 +28,21 @@ on:
       - docs
       - iosApp
 
+concurrency:
+  group: build-android-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build:
-
+  build_android:
+    name: Build Android app
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
+
       - name: set up JDK 17
         uses: actions/setup-java@v3
         with:
@@ -46,4 +54,5 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
+        working-directory: ./kmp-app
         run: ./gradlew --scan --stacktrace assembleDebug
