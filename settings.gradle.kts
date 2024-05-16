@@ -18,16 +18,6 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
-  repositories {
-    mavenCentral()
-    google {
-      mavenContent {
-        includeGroupAndSubgroups("androidx")
-        includeGroupAndSubgroups("com.android")
-        includeGroupAndSubgroups("com.google")
-      }
-    }
-  }
   versionCatalogs {
     create("moko") {
       from(files("gradle/moko.versions.toml"))
