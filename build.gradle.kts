@@ -24,7 +24,7 @@ plugins {
   alias(libs.plugins.kotlin.cocoapods) apply false
   // alias(libs.plugins.jetbrains.compose) apply false
   alias(libs.plugins.cashapp.redwood) apply false
-  id("com.github.build.logic") apply false
+  id("com.jithub.build.logic") apply false
 }
 
 subprojects {

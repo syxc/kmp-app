@@ -4,14 +4,14 @@ plugins {
   alias(libs.plugins.android.application)
   kotlin("android")
   alias(libs.plugins.cashapp.redwood)
-  id("com.github.build.logic")
+  id("com.jithub.build.logic")
 }
 
 android {
-  namespace = "com.github.app.android"
+  namespace = "com.jithub.app.android"
   compileSdk = Versions.compileSdk
   defaultConfig {
-    applicationId = "com.github.app.android"
+    applicationId = "com.jithub.app.android"
     minSdk = Versions.minSdk
     targetSdk = Versions.targetSdk
     versionCode = Versions.versionCode

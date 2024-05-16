@@ -14,7 +14,7 @@ repositories {
   }
 }
 
-group = "com.github.app.buildlogic"
+group = "com.jithub.app.buildlogic"
 
 kotlin {
   jvmToolchain(17)
@@ -33,7 +33,7 @@ dependencies {
 gradlePlugin {
   plugins {
     register("build-logic") {
-      id = "com.github.build.logic"
+      id = "com.jithub.build.logic"
       implementationClass = "BuildLogic"
     }
   }

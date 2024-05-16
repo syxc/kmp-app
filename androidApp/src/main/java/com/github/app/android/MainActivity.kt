@@ -1,4 +1,4 @@
-package com.github.app.android
+package com.jithub.app.android
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -13,11 +13,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.cash.redwood.composeui.RedwoodContent
 import app.cash.redwood.layout.composeui.ComposeUiRedwoodLayoutWidgetFactory
-import com.github.app.shared.Counter
-import com.github.app.shared.MR
-import com.github.app.shared.core.StringList
-import com.github.app.shared.redwood.composeui.ComposeUiWidgetFactory
-import com.github.app.shared.redwood.widget.SchemaWidgetSystem
+import com.jithub.app.shared.Counter
+import com.jithub.app.shared.MR
+import com.jithub.app.shared.core.StringList
+import com.jithub.app.shared.redwood.composeui.ComposeUiWidgetFactory
+import com.jithub.app.shared.redwood.widget.SchemaWidgetSystem
 
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {

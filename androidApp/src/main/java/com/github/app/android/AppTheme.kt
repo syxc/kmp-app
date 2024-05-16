@@ -1,4 +1,4 @@
-package com.github.app.android
+package com.jithub.app.android
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape

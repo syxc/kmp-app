@@ -1,4 +1,4 @@
-package com.github.app.shared.redwood.composeui
+package com.jithub.app.shared.redwood.composeui
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Shapes

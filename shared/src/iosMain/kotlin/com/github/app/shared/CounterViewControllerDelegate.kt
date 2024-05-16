@@ -1,11 +1,11 @@
-package com.github.app.shared
+package com.jithub.app.shared
 
 import app.cash.redwood.compose.DisplayLinkClock
 import app.cash.redwood.compose.RedwoodComposition
 import app.cash.redwood.layout.uiview.UIViewRedwoodLayoutWidgetFactory
 import app.cash.redwood.widget.RedwoodUIView
-import com.github.app.shared.core.StringList
-import com.github.app.shared.redwood.widget.SchemaWidgetSystem
+import com.jithub.app.shared.core.StringList
+import com.jithub.app.shared.redwood.widget.SchemaWidgetSystem
 import dev.icerock.moko.resources.desc.desc
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel

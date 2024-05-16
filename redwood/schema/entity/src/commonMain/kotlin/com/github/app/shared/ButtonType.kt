@@ -1,4 +1,4 @@
-package com.github.app.shared
+package com.jithub.app.shared
 
 enum class ButtonType {
   Primary,
