@@ -24,11 +24,12 @@ object Versions {
 // packaging-resources-excludes
 object Resources {
   val excludes = listOf(
-    "/META-INF/{AL2.0,LGPL2.1}",
     "DebugProbesKt.bin",
     "kotlin-tooling-metadata.json",
     "kotlin/**",
-    "META-INF/*.version",
+    // Only exclude *.version files in release mode as debug mode requires these files for layout inspector to work.
+    // "META-INF/*.version",
+    "META-INF/{AL2.0,LGPL2.1}",
     "META-INF/DEPENDENCIES",
     "META-INF/DEPENDENCIES.txt",
     "META-INF/NOTICE",
@@ -37,6 +38,7 @@ object Resources {
     "META-INF/LICENSE.txt",
     "META-INF/INDEX.LIST",
     "META-INF/*.kotlin_module",
-    "**/sentry-external-modules.txt" // assets/sentry-external-modules.txt
+    // assets/sentry-external-modules.txt
+    "**/sentry-external-modules.txt"
   )
 }
