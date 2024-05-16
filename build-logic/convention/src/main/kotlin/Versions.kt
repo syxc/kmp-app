@@ -12,7 +12,7 @@ object Versions {
   const val versionCode = 2401
 
   // https://developer.android.com/jetpack/androidx/releases/compose-compiler?hl=zh-cn
-  const val composeCompiler = "1.5.12"
+  const val composeCompiler = "1.5.14"
 
   // jvmToolchain
   const val jdkVersion = 17
