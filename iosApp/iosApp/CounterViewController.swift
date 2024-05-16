@@ -11,28 +11,28 @@ import shared
 import UIKit
 
 class CounterViewController: UIViewController {
-  private var delegate: CounterViewControllerDelegate?
+    private var delegate: CounterViewControllerDelegate?
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    let container = UIStackView()
-    container.axis = .horizontal
-    container.alignment = .fill
-    container.distribution = .fillEqually
-    container.translatesAutoresizingMaskIntoConstraints = false
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let container = UIStackView()
+        container.axis = .horizontal
+        container.alignment = .fill
+        container.distribution = .fillEqually
+        container.translatesAutoresizingMaskIntoConstraints = false
 
-    view.addSubview(container)
-    container.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-    container.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-    container.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-    container.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        view.addSubview(container)
+        container.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        container.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        container.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        container.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
 
-    self.delegate = CounterViewControllerDelegate(root: container)
-  }
+        delegate = CounterViewControllerDelegate(root: container)
+    }
 
-  // MARK: - deinit
+    // MARK: - deinit
 
-  deinit {
-    delegate?.dispose()
-  }
+    deinit {
+        delegate?.dispose()
+    }
 }

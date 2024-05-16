@@ -1,16 +1,23 @@
 PODS:
   - shared (1.0)
+  - SwiftFormat/CLI (0.53.9)
 
 DEPENDENCIES:
   - shared (from `../shared`)
+  - SwiftFormat/CLI (~> 0.53.9)
+
+SPEC REPOS:
+  trunk:
+    - SwiftFormat
 
 EXTERNAL SOURCES:
   shared:
     :path: "../shared"
 
 SPEC CHECKSUMS:
-  shared: be96e957c615a90e6b37a5fe0b691b64ce27be2a
+  shared: 825978f2a80ce00aa0d9e76613eb649352d916b5
+  SwiftFormat: d30e6e1c9a85f4bce83394af184e2c1d03032605
 
-PODFILE CHECKSUM: c53d60b950ac768cddc374c4bcbbb4566765a415
+PODFILE CHECKSUM: c865212f162b25efab1f4c3a7c4b85bdb722c41e
 
 COCOAPODS: 1.15.2

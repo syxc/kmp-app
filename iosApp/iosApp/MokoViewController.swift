@@ -10,24 +10,24 @@ import SwiftUI
 import UIKit
 
 class MokoViewController: UIViewController {
-  override func viewDidLoad() {
-    super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-    let vc = UIHostingController(rootView: MokoView())
+        let vc = UIHostingController(rootView: MokoView())
 
-    let mokoView = vc.view!
-    mokoView.translatesAutoresizingMaskIntoConstraints = false
+        let mokoView = vc.view!
+        mokoView.translatesAutoresizingMaskIntoConstraints = false
 
-    addChild(vc)
-    view.addSubview(mokoView)
+        addChild(vc)
+        view.addSubview(mokoView)
 
-    NSLayoutConstraint.activate([
-      mokoView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      mokoView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      mokoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      mokoView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-    ])
+        NSLayoutConstraint.activate([
+            mokoView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mokoView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            mokoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            mokoView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
 
-    vc.didMove(toParent: self)
-  }
+        vc.didMove(toParent: self)
+    }
 }
