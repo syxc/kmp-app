@@ -1,6 +1,6 @@
 @file:Suppress("ktlint:standard:filename")
 
-package com.github.app.shared.redwood
+package com.jithub.app.shared.redwood
 
 import app.cash.redwood.layout.RedwoodLayout
 import app.cash.redwood.schema.Default

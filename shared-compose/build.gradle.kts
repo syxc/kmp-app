@@ -52,7 +52,7 @@ kotlin {
 }
 
 android {
-  namespace = "com.github.app.share"
+  namespace = "com.jithub.app.share"
   compileSdk = Versions.compileSdk
 
   sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
@@ -60,7 +60,7 @@ android {
   sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
   defaultConfig {
-    // applicationId = "com.github.app.share"
+    // applicationId = "com.jithub.app.share"
     minSdk = Versions.minSdk
   }
 

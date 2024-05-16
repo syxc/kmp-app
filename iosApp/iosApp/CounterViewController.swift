@@ -3,7 +3,7 @@
 //  iosApp
 //
 //  Created by syxc on 2024/5/9.
-//  Copyright © 2024 github.com. All rights reserved.
+//  Copyright © 2024 jithub.com. All rights reserved.
 //
 
 import Foundation

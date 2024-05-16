@@ -1,4 +1,4 @@
-package com.github.app.shared
+package com.jithub.app.shared
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -10,9 +10,9 @@ import app.cash.redwood.layout.api.Constraint
 import app.cash.redwood.layout.api.CrossAxisAlignment
 import app.cash.redwood.layout.api.MainAxisAlignment
 import app.cash.redwood.layout.compose.Column
-import com.github.app.shared.core.StringList
-import com.github.app.shared.redwood.compose.Button
-import com.github.app.shared.redwood.compose.Text
+import com.jithub.app.shared.core.StringList
+import com.jithub.app.shared.redwood.compose.Button
+import com.jithub.app.shared.redwood.compose.Text
 
 @Composable
 fun Counter(

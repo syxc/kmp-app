@@ -1,4 +1,4 @@
-package com.github.app.shared.core
+package com.jithub.app.shared.core
 
 import androidx.compose.runtime.Immutable
 

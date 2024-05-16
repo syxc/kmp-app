@@ -34,7 +34,7 @@ kotlin {
     podfile = project.file("../iosApp/Podfile")
     framework {
       baseName = "shared"
-      binaryOptions["bundleId"] = "com.github.app.shared"
+      binaryOptions["bundleId"] = "com.jithub.app.shared"
       isStatic = true
       export(moko.resources)
       export("dev.icerock.moko:graphics:0.9.0")
@@ -74,11 +74,11 @@ kotlin {
 }
 
 multiplatformResources {
-  resourcesPackage.set("com.github.app.shared")
+  resourcesPackage.set("com.jithub.app.shared")
 }
 
 android {
-  namespace = "com.github.app.shared"
+  namespace = "com.jithub.app.shared"
   compileSdk = Versions.compileSdk
 
   defaultConfig {

@@ -1,5 +1,5 @@
 import android.os.Build
-import com.github.app.shared.MR
+import com.jithub.app.shared.MR
 import dev.icerock.moko.resources.StringResource
 
 class AndroidPlatform : Platform {

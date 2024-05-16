@@ -1,8 +1,8 @@
-package com.github.app.shared
+package com.jithub.app.shared
 
-import com.github.app.shared.redwood.widget.Button
-import com.github.app.shared.redwood.widget.SchemaWidgetFactory
-import com.github.app.shared.redwood.widget.Text
+import com.jithub.app.shared.redwood.widget.Button
+import com.jithub.app.shared.redwood.widget.SchemaWidgetFactory
+import com.jithub.app.shared.redwood.widget.Text
 import platform.UIKit.UIView
 
 object IosWidgetFactory : SchemaWidgetFactory<UIView> {
