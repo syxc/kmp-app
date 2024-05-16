@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
   repositories {
+    mavenCentral()
     google {
       mavenContent {
         includeGroupAndSubgroups("androidx")
@@ -9,7 +10,6 @@ buildscript {
         includeGroupAndSubgroups("com.google")
       }
     }
-    mavenCentral()
     gradlePluginPortal()
   }
   dependencies {
@@ -29,6 +29,7 @@ plugins {
 
 allprojects {
   repositories {
+    mavenCentral()
     google {
       mavenContent {
         includeGroupAndSubgroups("androidx")
@@ -36,7 +37,6 @@ allprojects {
         includeGroupAndSubgroups("com.google")
       }
     }
-    mavenCentral()
     maven("https://jitpack.io")
   }
 
