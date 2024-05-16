@@ -10,16 +10,16 @@ import shared
 import SwiftUI
 
 struct MokoView: View {
-  var body: some View {
-    VStack(spacing: 16) {
-      Image(systemName: "swift")
-        .font(.system(size: 200))
-        .foregroundColor(.accentColor)
-      Text("Moko Reousce: \(IOSPlatform().mokoText.desc().localized())")
+    var body: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "swift")
+                .font(.system(size: 200))
+                .foregroundColor(.accentColor)
+            Text("Moko Reousce: \(IOSPlatform().mokoText.desc().localized())")
+        }
     }
-  }
 }
 
 #Preview {
-  MokoView()
+    MokoView()
 }
