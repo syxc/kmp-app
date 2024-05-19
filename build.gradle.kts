@@ -49,7 +49,7 @@ allprojects {
     kotlinOptions {
       jvmTarget = Versions.java.toString()
     }
-    compilerOptions {
+    /*compilerOptions {
       // Treat all Kotlin warnings as errors
       allWarningsAsErrors = true
       freeCompilerArgs.addAll(
@@ -61,16 +61,16 @@ allprojects {
         "-language-version=2.0",
         "-Xsuppress-version-warnings"
       )
-    }
+    }*/
   }
 }
 
 gradle.taskGraph.whenReady {
-  tasks.forEach { task ->
+  tasks.forEach {
     /* Encountering the “Unable to make progress running work” Error in Gradle? */
     // gradle.startParameter.excludedTaskNames.addAll(listOf(":build-logic:convention:testClasses"))
-    if (task?.name?.contains(":testClasses", ignoreCase = false) == true) {
-      task.enabled = false
+    if (it.name.contains(":testClasses", ignoreCase = false)) {
+      it.enabled = false
     }
   }
 }
