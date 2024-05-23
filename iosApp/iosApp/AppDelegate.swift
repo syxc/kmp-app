@@ -6,7 +6,7 @@
 //  Copyright © 2024 jithub.com. All rights reserved.
 //
 
-import shared
+import SharedKit
 import UIKit
 
 @main
