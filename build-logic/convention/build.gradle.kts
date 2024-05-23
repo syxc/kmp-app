@@ -6,15 +6,10 @@ plugins {
 
 repositories {
   mavenCentral()
-  google {
-    content {
-      includeGroupByRegex(".*google.*")
-      includeGroupByRegex(".*android.*")
-    }
-  }
+  google()
 }
 
-group = "com.jithub.app.buildlogic"
+group = "com.jithub.app.build-logic"
 
 kotlin {
   jvmToolchain(17)

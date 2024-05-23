@@ -33,7 +33,7 @@ kotlin {
     ios.deploymentTarget = "13.0"
     podfile = project.file("../iosApp/Podfile")
     framework {
-      baseName = "shared"
+      baseName = "SharedKit"
       binaryOptions["bundleId"] = "com.jithub.app.shared"
       isStatic = true
       export(moko.resources)
@@ -67,7 +67,7 @@ kotlin {
     }
 
     iosMain.dependencies {
-      // redwood
+      // Redwood
       implementation(libs.redwood.layout.uiview)
     }
   }
