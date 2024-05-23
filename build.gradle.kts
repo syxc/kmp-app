@@ -49,7 +49,7 @@ allprojects {
     kotlinOptions {
       jvmTarget = Versions.java.toString()
     }
-    /*compilerOptions {
+    compilerOptions {
       // Treat all Kotlin warnings as errors
       allWarningsAsErrors = true
       freeCompilerArgs.addAll(
@@ -61,7 +61,7 @@ allprojects {
         "-language-version=2.0",
         "-Xsuppress-version-warnings"
       )
-    }*/
+    }
   }
 }
 
