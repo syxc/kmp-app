@@ -1,21 +1,6 @@
 * text=auto eol=lf
 *.bat text eol=crlf
 
-README          text
-LICENSE         text
-CONTRIBUTING    text
-
-.gitignore      text
-*.gitattributes text
-*.xcconfig      text
-*.md            text diff=markdown
-
-#
-# Exclude files from exporting
-#
-.gitattributes  export-ignore
-.gitignore      export-ignore
-
 *.jar binary
 *.png binary
 *.jpg binary
