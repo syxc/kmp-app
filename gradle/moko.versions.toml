@@ -1,6 +1,6 @@
 [versions]
 # https://repo.maven.apache.org/maven2/dev/icerock/moko/resources/
-resources = "0.24.0-beta-5"
+resources = "0.24.0"
 
 [plugins]
 
@@ -9,3 +9,5 @@ resources = { module = "dev.icerock.moko:resources", version.ref = "resources" }
 resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "resources" }
 resources-test = { module = "dev.icerock.moko:resources-test", version.ref = "resources" }
 resources-gradle-plugin = { module = "dev.icerock.moko:resources-generator", version.ref = "resources" }
+
+graphics = "dev.icerock.moko:graphics:0.9.0"

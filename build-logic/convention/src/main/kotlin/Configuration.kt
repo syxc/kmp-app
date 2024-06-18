@@ -1,4 +1,7 @@
+@file:Suppress("ConstPropertyName")
+
 import org.gradle.api.JavaVersion
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 object Versions {
   const val minSdk = 23
@@ -15,10 +18,11 @@ object Versions {
   const val composeCompiler = "1.5.14"
 
   // jvmToolchain
-  const val jdkVersion = 17
+  // const val jdkVersion = 17
 
   // starting with AGP 7.4.0 we need to target JVM 11 bytecode
-  val java = JavaVersion.VERSION_11
+  val javaVersion = JavaVersion.VERSION_11
+  val jvmTarget = JvmTarget.JVM_11
 }
 
 // packaging-resources-excludes

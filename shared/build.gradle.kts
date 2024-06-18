@@ -17,7 +17,7 @@ kotlin {
   androidTarget {
     compilations.all {
       kotlinOptions {
-        jvmTarget = Versions.java.toString()
+        jvmTarget = Versions.javaVersion.toString()
       }
     }
   }
@@ -37,7 +37,7 @@ kotlin {
       binaryOptions["bundleId"] = "com.jithub.app.shared"
       isStatic = true
       export(moko.resources)
-      export("dev.icerock.moko:graphics:0.9.0")
+      export(moko.graphics)
     }
   }
 
@@ -90,8 +90,8 @@ android {
   }
 
   compileOptions {
-    sourceCompatibility = Versions.java
-    targetCompatibility = Versions.java
+    sourceCompatibility = Versions.javaVersion
+    targetCompatibility = Versions.javaVersion
   }
 
   composeOptions {

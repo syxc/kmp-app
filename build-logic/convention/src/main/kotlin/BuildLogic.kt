@@ -4,7 +4,7 @@ class BuildLogic : BasePlugin() {
   override fun apply(project: Project) {
     log("======== start apply ========")
     log("apply target: ${project.displayName}")
-    log("java sourceCompatibility: ${Versions.java}")
+    log("java sourceCompatibility: ${Versions.javaVersion}")
     log("======== end apply ========")
   }
 }
