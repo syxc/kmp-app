@@ -1,4 +1,3 @@
-# https://editorconfig.org
 root = true
 
 [*]
@@ -8,6 +7,7 @@ indent_size = 2
 indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
+max_line_length = 110
 
 [*.java]
 ij_java_use_single_class_imports = true
@@ -21,7 +21,7 @@ ktlint_standard_property-naming = disabled
 ktlint_standard_backing-property-naming = disabled
 ktlint_function_naming_ignore_when_annotated_with = Composable, Test
 
-[*.{md,markdown}]
+[*.md]
 trim_trailing_whitespace = false
 
 [Makefile]
