@@ -1,6 +1,6 @@
 # kmp-app
 
-![kotlin-version](https://img.shields.io/badge/kotlin-1.9.23-blue)
+![kotlin-version](https://img.shields.io/badge/kotlin-1.9.24-blue)
 [![Android CI](https://github.com/syxc/kmp-app/actions/workflows/android.yml/badge.svg)](https://github.com/syxc/kmp-app/actions/workflows/android.yml)
 [![iOS CI](https://github.com/syxc/kmp-app/actions/workflows/ios.yml/badge.svg)](https://github.com/syxc/kmp-app/actions/workflows/ios.yml)
 
