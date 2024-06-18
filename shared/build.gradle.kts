@@ -37,7 +37,7 @@ kotlin {
       binaryOptions["bundleId"] = "com.jithub.app.shared"
       isStatic = true
       export(moko.resources)
-      export("dev.icerock.moko:graphics:0.9.0")
+      export(moko.graphics)
     }
   }
 
