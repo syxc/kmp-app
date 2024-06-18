@@ -17,7 +17,7 @@ kotlin {
   androidTarget {
     compilations.all {
       kotlinOptions {
-        jvmTarget = Versions.java.toString()
+        jvmTarget = Versions.javaVersion.toString()
       }
     }
   }
@@ -90,8 +90,8 @@ android {
   }
 
   compileOptions {
-    sourceCompatibility = Versions.java
-    targetCompatibility = Versions.java
+    sourceCompatibility = Versions.javaVersion
+    targetCompatibility = Versions.javaVersion
   }
 
   composeOptions {
