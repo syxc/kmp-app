@@ -34,23 +34,23 @@ android {
     }
   }
 
-  val propertyFile = project.rootProject.file("keystore.properties")
+  val propertyFile by lazy { project.rootProject.file("keystore.properties") }
   val currentSigning = if (propertyFile.exists() && propertyFile.canRead()) {
-    val properties = Properties().apply {
-      propertyFile.inputStream().use { load(it) }
-    }
-    if (file(properties["storeFile"] as String).canRead()) {
+    val properties = Properties().apply { propertyFile.inputStream().use { load(it) } }
+    val currentStoreFile by lazy { file(properties.getProperty("storeFile")) }
+    if (currentStoreFile.exists() && currentStoreFile.canRead()) {
       signingConfigs.create("release") {
-        storeFile = file(properties["storeFile"] as String)
-        storePassword = properties["storePassword"] as String
-        keyAlias = properties["keyAlias"] as String
-        keyPassword = properties["keyPassword"] as String
+        storeFile = currentStoreFile
+        storePassword = properties.getProperty("storePassword")
+        keyAlias = properties.getProperty("keyAlias")
+        keyPassword = properties.getProperty("keyPassword")
       }
     } else {
-      println("Oops,storeFile can't read!")
+      println("Oops, storeFile can't be read!")
       signingConfigs.getByName("debug")
     }
   } else {
+    println("Oops, keystore.properties can't be read!")
     signingConfigs.getByName("debug")
   }
 
