@@ -1,7 +1,7 @@
 [versions]
-kotlin = "1.9.24"
+kotlin = "2.0.0"
 agp = "8.2.2"
-redwood = "0.11.0"
+redwood = "0.12.0"
 
 androidx-activityCompose = "1.9.0"
 androidx-appcompat = "1.7.0"
@@ -42,6 +42,7 @@ jetbrains-compose-animation = { module = "org.jetbrains.compose.animation:animat
 jetbrains-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "jbr-compose" }
 
 # Redwood: https://github.com/cashapp/redwood
+redwood-gradle-plugin = { module = "app.cash.redwood:redwood-gradle-plugin", version.ref = "redwood" }
 redwood-compose = { module = "app.cash.redwood:redwood-compose", version.ref = "redwood" }
 redwood-composeui = { module = "app.cash.redwood:redwood-composeui", version.ref = "redwood" }
 redwood-widget-compose = { module = "app.cash.redwood:redwood-widget-compose", version.ref = "redwood" }
@@ -65,7 +66,7 @@ kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref 
 kotlin-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "jbr-compose" }
 
-cashapp-redwood = { id = "app.cash.redwood", version.ref = "redwood" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
 [bundles]
 asm = []

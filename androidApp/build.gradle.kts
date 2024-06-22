@@ -3,7 +3,7 @@ import java.util.Properties
 plugins {
   alias(libs.plugins.android.application)
   kotlin("android")
-  alias(libs.plugins.cashapp.redwood)
+  alias(libs.plugins.compose.compiler)
   id("com.jithub.build.logic")
 }
 
@@ -19,13 +19,9 @@ android {
   }
 
   buildFeatures {
-    // The Redwood Gradle plugin cannot be applied to an Android project which enables Compose.
+    // If you are using Redwood, you do not need to set this parameter.
     // compose = true
     buildConfig = true
-  }
-
-  composeOptions {
-    kotlinCompilerExtensionVersion = Versions.composeCompiler
   }
 
   packaging {
@@ -86,6 +82,11 @@ android {
   kotlinOptions {
     jvmTarget = Versions.javaVersion.toString()
   }
+}
+
+composeCompiler {
+  enableStrongSkippingMode = true
+  reportsDestination = layout.buildDirectory.dir("compose_compiler")
 }
 
 androidComponents {

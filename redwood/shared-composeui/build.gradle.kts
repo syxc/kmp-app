@@ -1,6 +1,6 @@
 plugins {
   kotlin("jvm")
-  alias(libs.plugins.cashapp.redwood)
+  alias(libs.plugins.compose.compiler)
 }
 
 dependencies {
