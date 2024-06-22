@@ -1,25 +1,28 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 plugins {
   alias(libs.plugins.kotlin.multiplatform)
   alias(libs.plugins.kotlin.cocoapods)
-  alias(libs.plugins.cashapp.redwood)
+  alias(libs.plugins.compose.compiler)
   alias(libs.plugins.android.library)
   id("dev.icerock.mobile.multiplatform-resources")
 }
 
 kotlin {
-  @OptIn(ExperimentalKotlinGradlePluginApi::class)
-  compilerOptions {
-    freeCompilerArgs.add("-Xexpect-actual-classes")
+  // https://youtrack.jetbrains.com/issue/KT-61573
+  targets.configureEach {
+    compilations.configureEach {
+      compileTaskProvider.configure {
+        compilerOptions {
+          freeCompilerArgs.add("-Xexpect-actual-classes")
+        }
+      }
+    }
   }
 
   androidTarget {
-    compilations.all {
-      kotlinOptions {
-        jvmTarget = Versions.javaVersion.toString()
-      }
-    }
+    @Suppress("OPT_IN_USAGE")
+    unitTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
   }
 
   iosX64()
@@ -39,9 +42,18 @@ kotlin {
       export(moko.resources)
       export(moko.graphics)
     }
+    extraSpecAttributes["swift_version"] = "[\'5.0\']" // SKIE Needs this!
   }
 
   sourceSets {
+    all {
+      languageSettings.apply {
+        optIn("kotlin.RequiresOptIn")
+        optIn("kotlinx.coroutines.ExperimentalCoroutinesApi")
+        optIn("kotlin.time.ExperimentalTime")
+      }
+    }
+
     commonMain.dependencies {
       // Redwood
       implementation(libs.redwood.compose)
@@ -92,10 +104,6 @@ android {
   compileOptions {
     sourceCompatibility = Versions.javaVersion
     targetCompatibility = Versions.javaVersion
-  }
-
-  composeOptions {
-    kotlinCompilerExtensionVersion = Versions.composeCompiler
   }
 }
 
