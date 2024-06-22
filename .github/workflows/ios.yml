@@ -1,19 +1,6 @@
 name: iOS CI
 
 on:
-  push:
-    branches: [ "master" ]
-    paths-ignore:
-      - '.idea/**'
-      - '.gitattributes'
-      - '.github/**.json'
-      - '.gitignore'
-      - '.gitmodules'
-      - '**.md'
-      - 'LICENSE'
-      - 'NOTICE'
-      - docs
-      - androidApp
   pull_request:
     branches: [ "master" ]
     paths-ignore:
@@ -27,6 +14,7 @@ on:
       - 'NOTICE'
       - docs
       - androidApp
+  workflow_dispatch: { }
 
 concurrency:
   group: build-ios-${{ github.ref }}
