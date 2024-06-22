@@ -1,6 +1,5 @@
 @file:Suppress("UnstableApiUsage")
 
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
@@ -108,14 +107,17 @@ private fun Project.configureCommonKotlin() {
     // We set the JVM target (the bytecode version) above for all Kotlin-based Java bytecode
     // compilations, but we also need to set the JDK API version for the Kotlin JVM targets to
     // prevent linking against newer JDK APIs (the Android targets link against the android.jar).
-    @OptIn(ExperimentalKotlinGradlePluginApi::class)
     kotlin.targets.withType(KotlinJvmTarget::class.java) {
-      compilerOptions {
-        freeCompilerArgs.set(
-          freeCompilerArgs.getOrElse(emptyList()) + listOf(
-            "-Xjdk-release=${Versions.javaVersion}"
-          )
-        )
+      compilations.configureEach {
+        compileTaskProvider.configure {
+          compilerOptions {
+            freeCompilerArgs.set(
+              freeCompilerArgs.getOrElse(emptyList()) + listOf(
+                "-Xjdk-release=${Versions.javaVersion}"
+              )
+            )
+          }
+        }
       }
     }
 
