@@ -16,9 +16,9 @@ on:
       - androidApp
   workflow_dispatch: { }
 
-concurrency:
-  group: build-ios-${{ github.ref }}
-  cancel-in-progress: true
+#concurrency:
+#  group: build-ios-${{ github.ref }}
+#  cancel-in-progress: true
 
 jobs:
   build_ios:
