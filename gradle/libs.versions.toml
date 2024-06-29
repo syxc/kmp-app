@@ -10,11 +10,9 @@ androidx-core-ktx = "1.13.1"
 androidx-material = "1.12.0"
 
 jbr-compose = "1.6.11"
-androidx-compose = "1.6.6"
-compose-material3 = "1.2.1"
 
-androidx-espresso-core = "3.5.1"
-androidx-test-junit = "1.1.5"
+androidx-espresso-core = "3.6.1"
+androidx-test-junit = "1.2.1"
 junit = "4.13.2"
 
 [libraries]
@@ -27,21 +25,25 @@ androidx-material = { group = "com.google.android.material", name = "material", 
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 
-# JetBrains Compose: https://github.com/JetBrains/compose-multiplatform
-jetbrains-compose-compiler = "org.jetbrains.compose.compiler:compiler:1.5.14"
-jetbrains-compose-gradlePlugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "jbr-compose" }
-jetbrains-compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "jbr-compose" }
-jetbrains-compose-runtime-saveable = { module = "org.jetbrains.compose.runtime:runtime-saveable", version.ref = "jbr-compose" }
-jetbrains-compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "jbr-compose" }
+# JetBrains Compose
+# https://github.com/JetBrains/compose-multiplatform
+#jetbrains-compose-compiler = "org.jetbrains.compose.compiler:compiler:1.5.14"
+#jetbrains-compose-gradlePlugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "jbr-compose" }
+#jetbrains-compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "jbr-compose" }
+#jetbrains-compose-runtime-saveable = { module = "org.jetbrains.compose.runtime:runtime-saveable", version.ref = "jbr-compose" }
+#jetbrains-compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "jbr-compose" }
+
 jetbrains-compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "jbr-compose" }
 jetbrains-compose-ui-tooling = { module = "org.jetbrains.compose.ui:ui-tooling", version.ref = "jbr-compose" }
 jetbrains-compose-ui-tooling-preview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "jbr-compose" }
-jetbrains-compose-material = { module = "org.jetbrains.compose.material:material", version.ref = "jbr-compose" }
 jetbrains-compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "jbr-compose" }
-jetbrains-compose-animation = { module = "org.jetbrains.compose.animation:animation-core", version.ref = "jbr-compose" }
-jetbrains-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "jbr-compose" }
 
-# Redwood: https://github.com/cashapp/redwood
+#jetbrains-compose-material = { module = "org.jetbrains.compose.material:material", version.ref = "jbr-compose" }
+#jetbrains-compose-animation = { module = "org.jetbrains.compose.animation:animation-core", version.ref = "jbr-compose" }
+#jetbrains-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "jbr-compose" }
+
+# Redwood
+# https://github.com/cashapp/redwood
 redwood-gradle-plugin = { module = "app.cash.redwood:redwood-gradle-plugin", version.ref = "redwood" }
 redwood-compose = { module = "app.cash.redwood:redwood-compose", version.ref = "redwood" }
 redwood-composeui = { module = "app.cash.redwood:redwood-composeui", version.ref = "redwood" }
