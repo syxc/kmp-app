@@ -28,7 +28,8 @@ plugins {
   alias(libs.plugins.kotlin.cocoapods) apply false
   // alias(libs.plugins.jetbrains.compose) apply false
   alias(libs.plugins.compose.compiler) apply false
-  id("com.jithub.build.logic") apply false
+  alias(libs.plugins.spotless) apply false
+  id("com.jithub.build.logic")
 }
 
 allprojects {
@@ -44,6 +45,15 @@ allprojects {
     maven("https://jitpack.io")
   }
   configureCommonKotlin()
+}
+
+subprojects {
+  apply(from = rootProject.file("spotless/spotless.gradle"))
+  afterEvaluate {
+    tasks.withType(JavaCompile::class.java) {
+      dependsOn(tasks.getByName("spotlessApply"))
+    }
+  }
 }
 
 gradle.taskGraph.whenReady {

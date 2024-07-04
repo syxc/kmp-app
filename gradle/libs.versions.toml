@@ -70,5 +70,7 @@ jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "jbr-compose" 
 
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
+spotless = "com.diffplug.spotless:6.25.0"
+
 [bundles]
 asm = []
