@@ -15,11 +15,7 @@ import com.jithub.app.shared.redwood.compose.Button
 import com.jithub.app.shared.redwood.compose.Text
 
 @Composable
-fun Counter(
-  modifier: Modifier = Modifier,
-  value: Int = 0,
-  labels: StringList? = StringList(listOf())
-) {
+fun Counter(modifier: Modifier = Modifier, value: Int = 0, labels: StringList? = StringList(listOf())) {
   var count by rememberSaveable { mutableIntStateOf(value) }
   Column(
     width = Constraint.Fill,
