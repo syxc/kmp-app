@@ -29,6 +29,9 @@ spotless {
         "ktlint_function_naming_ignore_when_annotated_with": "Composable",
         "ktlint_compose_compositionlocal-allowlist"        : "disabled"
       ]
+    ).customRuleSets(
+      // https://github.com/mrmans0n/compose-rules
+      ["io.nlopez.compose.rules:ktlint:0.4.5"]
     )
   }
 
