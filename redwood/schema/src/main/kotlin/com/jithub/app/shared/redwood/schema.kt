@@ -21,9 +21,7 @@ import app.cash.redwood.schema.Widget
 interface Schema
 
 @Widget(2)
-data class Text(
-  @Property(1) val text: String?
-)
+data class Text(@Property(1) val text: String?)
 
 @Widget(3)
 data class Button(
