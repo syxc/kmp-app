@@ -29,7 +29,7 @@ plugins {
   // alias(libs.plugins.jetbrains.compose) apply false
   alias(libs.plugins.compose.compiler) apply false
   alias(libs.plugins.spotless) apply false
-  id("com.jithub.build.logic")
+  id("com.jithub.build-logic")
 }
 
 allprojects {
@@ -44,7 +44,7 @@ allprojects {
     }
     maven("https://jitpack.io")
   }
-  configureCommonKotlin()
+  apply(plugin = "com.jithub.build-support")
 }
 
 subprojects {
@@ -68,39 +68,4 @@ gradle.taskGraph.whenReady {
 
 tasks.register<Delete>("clean") {
   delete(rootProject.layout.buildDirectory)
-}
-
-private fun Project.configureCommonKotlin() {
-  tasks.withType(KotlinCompile::class.java).configureEach {
-    compilerOptions {
-      // Treat all Kotlin warnings as errors (disabled by default)
-      allWarningsAsErrors.set(properties["warningsAsErrors"] as? Boolean ?: false)
-
-      freeCompilerArgs.set(
-        freeCompilerArgs.getOrElse(emptyList()) + listOf(
-          // https://kotlinlang.org/docs/whatsnew13.html#progressive-mode
-          "-progressive",
-          // https://kotlinlang.org/docs/multiplatform-expect-actual.html#expected-and-actual-classes
-          "-Xexpect-actual-classes"
-        )
-      )
-    }
-  }
-
-  tasks.withType(KotlinJvmCompile::class.java).configureEach {
-    compilerOptions {
-      freeCompilerArgs.set(
-        freeCompilerArgs.getOrElse(emptyList()) + listOf(
-          "-Xjvm-default=all"
-        )
-      )
-      jvmTarget = Versions.jvmTarget
-    }
-  }
-
-  // Kotlin requires the Java compatibility matches.
-  tasks.withType(JavaCompile::class.java).configureEach {
-    sourceCompatibility = Versions.javaVersion.toString()
-    targetCompatibility = Versions.javaVersion.toString()
-  }
 }

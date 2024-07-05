@@ -35,8 +35,12 @@ dependencies {
 gradlePlugin {
   plugins {
     register("build-logic") {
-      id = "com.jithub.build.logic"
+      id = "com.jithub.build-logic"
       implementationClass = "BuildLogic"
+    }
+    register("build-support") {
+      id = "com.jithub.build-support"
+      implementationClass = "BuildSupportPlugin"
     }
   }
 }
