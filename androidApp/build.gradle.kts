@@ -4,7 +4,6 @@ plugins {
   alias(libs.plugins.android.application)
   kotlin("android")
   alias(libs.plugins.compose.compiler)
-  id("com.jithub.build.logic")
 }
 
 android {
