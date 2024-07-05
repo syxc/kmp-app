@@ -15,6 +15,17 @@ misc.xml
 deploymentTargetDropDown.xml
 render.experimental.xml
 
+# Xcode
+**/build/
+xcuserdata
+!src/**/build/
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
+
 # Fleet
 .fleet/
 
@@ -43,13 +54,3 @@ google-services.json
 
 # Signing configuration file
 keystore.properties
-
-**/build/
-xcuserdata
-!src/**/build/
-*.xcodeproj/*
-!*.xcodeproj/project.pbxproj
-!*.xcodeproj/xcshareddata/
-!*.xcodeproj/project.xcworkspace/
-!*.xcworkspace/contents.xcworkspacedata
-**/xcshareddata/WorkspaceSettings.xcsettings
