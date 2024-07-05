@@ -3,6 +3,8 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:installLocation="auto">
 
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
   <application
     android:allowBackup="false"
     android:dataExtractionRules="@xml/data_extraction_rules"

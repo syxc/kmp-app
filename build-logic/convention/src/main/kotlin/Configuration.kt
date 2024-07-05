@@ -5,7 +5,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 object Versions {
   const val minSdk = 23
-  const val targetSdk = 33
+  const val targetSdk = 34
   const val compileSdk = 34
 
   private const val majorVersion = 0
