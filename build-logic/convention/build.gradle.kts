@@ -34,12 +34,13 @@ dependencies {
 
 gradlePlugin {
   plugins {
+    val prefix = "com.jithub.gradle"
     register("build-logic") {
-      id = "com.jithub.build-logic"
+      id = "$prefix.build-logic"
       implementationClass = "BuildLogic"
     }
     register("build-support") {
-      id = "com.jithub.build-support"
+      id = "$prefix.build-support"
       implementationClass = "BuildSupportPlugin"
     }
   }

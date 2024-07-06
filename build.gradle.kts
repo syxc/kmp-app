@@ -1,8 +1,5 @@
 @file:Suppress("UnstableApiUsage")
 
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
-
 buildscript {
   repositories {
     mavenCentral()
@@ -29,7 +26,7 @@ plugins {
   // alias(libs.plugins.jetbrains.compose) apply false
   alias(libs.plugins.compose.compiler) apply false
   alias(libs.plugins.spotless) apply false
-  id("com.jithub.build-logic")
+  id("com.jithub.gradle.build-logic")
 }
 
 allprojects {
@@ -44,7 +41,7 @@ allprojects {
     }
     maven("https://jitpack.io")
   }
-  apply(plugin = "com.jithub.build-support")
+  apply(plugin = "com.jithub.gradle.build-support")
 }
 
 subprojects {

@@ -8,11 +8,8 @@ plugins {
 
 android {
   namespace = "com.jithub.app.android"
-  compileSdk = Versions.compileSdk
   defaultConfig {
     applicationId = "com.jithub.app.android"
-    minSdk = Versions.minSdk
-    targetSdk = Versions.targetSdk
     versionCode = Versions.versionCode
     versionName = Versions.versionName
   }
@@ -21,12 +18,6 @@ android {
     // If you are using Redwood, you do not need to set this parameter.
     // compose = true
     buildConfig = true
-  }
-
-  packaging {
-    resources {
-      excludes += Resources.excludes
-    }
   }
 
   val propertyFile by lazy { project.rootProject.file("keystore.properties") }
@@ -72,28 +63,11 @@ android {
       signingConfig = currentSigning
     }
   }
-
-  compileOptions {
-    sourceCompatibility = Versions.javaVersion
-    targetCompatibility = Versions.javaVersion
-  }
-
-  kotlinOptions {
-    jvmTarget = Versions.javaVersion.toString()
-  }
 }
 
 composeCompiler {
   enableStrongSkippingMode = true
   reportsDestination = layout.buildDirectory.dir("compose_compiler")
-}
-
-androidComponents {
-  onVariants(selector().withBuildType("release")) {
-    // Only exclude *.version files in release mode as debug mode requires
-    // these files for layout inspector to work.
-    it.packaging.resources.excludes.add("META-INF/*.version")
-  }
 }
 
 dependencies {

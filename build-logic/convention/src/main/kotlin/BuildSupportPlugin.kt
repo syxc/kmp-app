@@ -1,5 +1,12 @@
+import com.android.build.api.dsl.LibraryExtension
+import com.android.build.api.dsl.Lint
+import com.android.build.api.variant.AndroidComponentsExtension
+import com.android.build.gradle.BaseExtension
+import com.android.build.gradle.TestExtension
+import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.api.Project
 import org.gradle.api.tasks.compile.JavaCompile
+import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
@@ -11,14 +18,109 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 class BuildSupportPlugin : BasePlugin() {
 
-  override fun apply(target: Project) {
-    log("apply target: ${target.displayName}")
+  override fun apply(project: Project) {
+    log("apply target: ${project.displayName}")
 
-    target.group = "com.jithub.build-support"
-    target.version = "0.1"
+    project.group = "com.jithub.app.build-support"
+    project.version = Versions.versionName
 
-    target.configureCommonKotlin()
-    target.configureCommonCompose()
+    project.configureCommonAndroid()
+    project.configureCommonKotlin()
+    project.configureCommonCompose()
+  }
+
+  private fun Project.configureCommonAndroid() {
+    plugins.withId("com.android.base") {
+      val android = extensions.getByName("android") as BaseExtension
+      android.apply {
+        compileSdkVersion(Versions.compileSdk)
+        defaultConfig {
+          minSdk = Versions.minSdk
+          targetSdk = Versions.targetSdk
+        }
+
+        testOptions.animationsDisabled = true
+
+        sourceSets.configureEach {
+          java.srcDirs("src/$name/kotlin")
+        }
+
+        packagingOptions.apply {
+          resources {
+            excludes += Resources.excludes
+          }
+        }
+
+        compileOptions {
+          sourceCompatibility = Versions.javaVersion
+          targetCompatibility = Versions.javaVersion
+        }
+
+        tasks.withType(KotlinJvmCompile::class.java).configureEach {
+          compilerOptions {
+            // Treat all Kotlin warnings as errors (disabled by default)
+            allWarningsAsErrors.set(properties["warningsAsErrors"] as? Boolean ?: false)
+
+            freeCompilerArgs.set(
+              freeCompilerArgs.getOrElse(emptyList()) + listOf(
+                "-Xcontext-receivers",
+                "-opt-in=kotlin.RequiresOptIn",
+                // Enable experimental coroutines APIs, including Flow
+                "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+                // Enable experimental compose APIs
+                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+                "-opt-in=androidx.lifecycle.compose.ExperimentalLifecycleComposeApi",
+                "-opt-in=androidx.compose.animation.ExperimentalSharedTransitionApi"
+              )
+            )
+
+            jvmTarget.set(Versions.jvmTarget)
+          }
+        }
+
+        with(project) {
+          when (android) {
+            is BaseAppModuleExtension -> configure<BaseAppModuleExtension> {
+              lint(lintConfigure())
+            }
+
+            is LibraryExtension -> configure<LibraryExtension> {
+              lint(lintConfigure())
+            }
+
+            is TestExtension -> configure<TestExtension> {
+              lint(lintConfigure())
+            }
+
+            else -> {
+              pluginManager.apply("com.android.lint")
+              configure<Lint>(lintConfigure())
+            }
+          }
+        }
+      }
+    }
+
+    plugins.withId("com.android.application") {
+      val android = extensions.getByName("android") as BaseAppModuleExtension
+      android.apply {
+        dependenciesInfo {
+          // Disables dependency metadata when building APKs.
+          includeInApk = false
+          // Disables dependency metadata when building Android App Bundles.
+          includeInBundle = false
+        }
+      }
+
+      val androidComponents = extensions.getByType(AndroidComponentsExtension::class.java)
+      with(androidComponents) {
+        onVariants(selector().withBuildType("release")) {
+          // Only exclude *.version files in release mode as debug mode requires
+          // these files for layout inspector to work.
+          it.packaging.resources.excludes.add("META-INF/*.version")
+        }
+      }
+    }
   }
 
   // https://github.com/cashapp/redwood/blob/trunk/build-support/src/main/kotlin/app/cash/redwood/buildsupport/RedwoodBuildPlugin.kt
@@ -104,5 +206,14 @@ class BuildSupportPlugin : BasePlugin() {
         )
       }
     }
+  }
+
+  private fun lintConfigure(): Lint.() -> Unit = {
+    abortOnError = true
+    warningsAsErrors = false
+    ignoreTestSources = true
+    checkDependencies = true
+    checkReleaseBuilds = false // Full lint runs as part of 'build' task.
+    htmlReport = true
   }
 }
