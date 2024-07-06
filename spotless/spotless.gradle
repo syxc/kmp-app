@@ -1,12 +1,12 @@
 apply plugin: "com.diffplug.spotless"
 
-// https://github.com/pinterest/ktlint
-def ktlintVersion = "1.3.1"
-
 spotless {
   java {
     target("**/*.java")
-    targetExclude("**/build/**/*.java", "${rootProject.rootDir}/spotless/**")
+    targetExclude(
+      "**/build/**/*.java",
+      "${rootProject.rootDir}/spotless/**"
+    )
     toggleOffOn("@formatter:off", "@formatter:on")
     importOrder()
     removeUnusedImports()
@@ -17,10 +17,19 @@ spotless {
     formatAnnotations()
   }
 
+  // https://github.com/pinterest/ktlint
+  def ktlintVersion = "1.3.1"
+
   kotlin {
     target("**/*.kt")
-    targetExclude("**/build/**/*.kt", "${rootProject.rootDir}/spotless/**")
-    ktlint(ktlintVersion).setEditorConfigPath(
+    targetExclude(
+      "**/build/**/*.kt",
+      "${rootProject.rootDir}/spotless/**"
+    )
+    ktlint(ktlintVersion).customRuleSets(
+      // https://github.com/mrmans0n/compose-rules
+      ["io.nlopez.compose.rules:ktlint:0.4.5"]
+    ).setEditorConfigPath(
       "${rootProject.rootDir}/.editorconfig"
     ).editorConfigOverride(
       [
@@ -33,20 +42,31 @@ spotless {
         "ktlint_function_naming_ignore_when_annotated_with": "Composable",
         "ktlint_compose_compositionlocal-allowlist"        : "disabled"
       ]
-    ).customRuleSets(
-      // https://github.com/mrmans0n/compose-rules
-      ["io.nlopez.compose.rules:ktlint:0.4.5"]
     )
   }
 
   kotlinGradle {
     target("**/*.gradle.kts")
+    targetExclude(
+      "**/build/**/*.kts",
+      "${rootProject.rootDir}/spotless/**"
+    )
     ktlint(ktlintVersion).setEditorConfigPath("${rootProject.rootDir}/.editorconfig")
   }
 
   format("xml") {
     target("**/*.xml")
-    targetExclude("**/build/**/*.xml", "**/lint-config/**/*.xml", "${rootProject.rootDir}/spotless/**")
+    targetExclude(
+      "**/.idea/**/*.xml",
+      "**/.run/**/*.xml",
+      "**/.kotlin/**/*.xml",
+      "**/build/**/*.xml",
+      "**/lint-config/**/*.xml",
+      "${rootProject.rootDir}/spotless/**"
+    )
+    indentWithSpaces(2)
+    trimTrailingWhitespace()
+    endWithNewline()
     // Look for the first XML tag that isn't a comment (<!--) or the xml declaration (<?xml)
     licenseHeaderFile(rootProject.file("spotless/copyright.xml"), "(<[^!?])")
   }

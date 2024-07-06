@@ -91,19 +91,12 @@ multiplatformResources {
 
 android {
   namespace = "com.jithub.app.shared"
-  compileSdk = Versions.compileSdk
 
   defaultConfig {
-    minSdk = Versions.minSdk
   }
 
   buildFeatures {
     buildConfig = true
-  }
-
-  compileOptions {
-    sourceCompatibility = Versions.javaVersion
-    targetCompatibility = Versions.javaVersion
   }
 }
 
