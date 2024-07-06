@@ -25,7 +25,6 @@ plugins {
   alias(libs.plugins.kotlin.cocoapods) apply false
   // alias(libs.plugins.jetbrains.compose) apply false
   alias(libs.plugins.compose.compiler) apply false
-  alias(libs.plugins.spotless) apply false
   id("com.jithub.gradle.build-logic")
 }
 
@@ -45,7 +44,6 @@ allprojects {
 }
 
 subprojects {
-  apply(from = rootProject.file("spotless/spotless.gradle"))
   afterEvaluate {
     tasks.withType(JavaCompile::class.java) {
       dependsOn(tasks.getByName("spotlessApply"))
@@ -63,6 +61,6 @@ gradle.taskGraph.whenReady {
   }
 }
 
-tasks.register<Delete>("clean") {
+tasks.getByName("clean") {
   delete(rootProject.layout.buildDirectory)
 }

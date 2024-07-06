@@ -18,6 +18,7 @@ junit = "4.13.2"
 [libraries]
 gradlePlugin-android = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 gradlePlugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+gradlePlugin-spotless = "com.diffplug.spotless:spotless-plugin-gradle:6.25.0"
 
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx-appcompat" }
@@ -69,8 +70,6 @@ kotlin-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref =
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "jbr-compose" }
 
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
-spotless = "com.diffplug.spotless:6.25.0"
 
 [bundles]
 asm = []

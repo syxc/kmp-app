@@ -30,6 +30,7 @@ dependencies {
     exclude(group = "org.ow2.asm")
   }
   implementation(libs.bundles.asm)
+  implementation(libs.gradlePlugin.spotless)
 }
 
 gradlePlugin {
