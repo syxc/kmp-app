@@ -132,6 +132,7 @@ class BuildSupportPlugin : BasePlugin() {
         defaultConfig {
           minSdk = Versions.minSdk
           targetSdk = Versions.targetSdk
+          testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
 
         testOptions.animationsDisabled = true
@@ -301,14 +302,5 @@ class BuildSupportPlugin : BasePlugin() {
         )
       }
     }
-  }
-
-  private fun lintConfigure(): Lint.() -> Unit = {
-    abortOnError = true
-    warningsAsErrors = false
-    ignoreTestSources = true
-    checkDependencies = true
-    checkReleaseBuilds = false // Full lint runs as part of 'build' task.
-    htmlReport = true
   }
 }

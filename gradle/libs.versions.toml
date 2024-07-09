@@ -19,6 +19,7 @@ junit = "4.13.2"
 gradlePlugin-android = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 gradlePlugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 gradlePlugin-spotless = "com.diffplug.spotless:spotless-plugin-gradle:6.25.0"
+gradlePlugin-compose-compiler = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx-appcompat" }
@@ -63,13 +64,18 @@ androidx-test-junit = { group = "androidx.test.ext", name = "junit", version.ref
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 
 [plugins]
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+android-application-compose = { id = "com.android.application.compose" }
+android-library-compose = { id = "com.android.library.compose" }
+
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
-jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "jbr-compose" }
 
-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "jbr-compose" }
 
 [bundles]
 asm = []
