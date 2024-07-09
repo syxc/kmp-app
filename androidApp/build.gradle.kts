@@ -1,9 +1,9 @@
 import java.util.Properties
 
 plugins {
-  alias(libs.plugins.android.application)
-  kotlin("android")
+  alias(libs.plugins.android.application.compose)
   alias(libs.plugins.compose.compiler)
+  kotlin("android")
 }
 
 android {
@@ -63,11 +63,6 @@ android {
       signingConfig = currentSigning
     }
   }
-}
-
-composeCompiler {
-  enableStrongSkippingMode = true
-  reportsDestination = layout.buildDirectory.dir("compose_compiler")
 }
 
 dependencies {

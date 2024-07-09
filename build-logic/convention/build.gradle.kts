@@ -29,20 +29,30 @@ dependencies {
   compileOnly(libs.gradlePlugin.kotlin) {
     exclude(group = "org.ow2.asm")
   }
-  implementation(libs.bundles.asm)
+  compileOnly(libs.bundles.asm)
   implementation(libs.gradlePlugin.spotless)
+  implementation(libs.gradlePlugin.compose.compiler)
 }
 
 gradlePlugin {
   plugins {
     val prefix = "com.jithub.gradle"
-    register("build-logic") {
+    register("buildLogic") {
       id = "$prefix.build-logic"
       implementationClass = "BuildLogic"
     }
-    register("build-support") {
+    register("buildSupport") {
       id = "$prefix.build-support"
       implementationClass = "BuildSupportPlugin"
+    }
+
+    register("androidApplicationCompose") {
+      id = "com.android.application.compose"
+      implementationClass = "AndroidApplicationComposeConventionPlugin"
+    }
+    register("androidLibraryCompose") {
+      id = "com.android.library.compose"
+      implementationClass = "AndroidLibraryComposeConventionPlugin"
     }
   }
 }
