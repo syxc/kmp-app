@@ -132,6 +132,7 @@ class BuildSupportPlugin : BasePlugin() {
         defaultConfig {
           minSdk = Versions.minSdk
           targetSdk = Versions.targetSdk
+          testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
 
         testOptions.animationsDisabled = true
