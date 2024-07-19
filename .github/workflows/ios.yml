@@ -19,9 +19,8 @@ on:
       - docs
       - androidApp
 
-#concurrency:
-#  group: build-ios-${{ github.ref }}
-#  cancel-in-progress: true
+env:
+  GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx6g -Dorg.gradle.daemon=false -Dorg.gradle.vfs.watch=false -Dkotlin.incremental=false"
 
 jobs:
   build_ios:
