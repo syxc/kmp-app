@@ -36,6 +36,6 @@ object Resources {
     "META-INF/INDEX.LIST",
     "META-INF/*.kotlin_module",
     // assets/sentry-external-modules.txt
-    "**/sentry-external-modules.txt"
+    "**/sentry-external-modules.txt",
   )
 }

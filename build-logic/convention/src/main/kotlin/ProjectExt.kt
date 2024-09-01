@@ -16,7 +16,8 @@ internal fun Project.lintConfigure(): Lint.() -> Unit = {
   // lintConfig = rootProject.file("lint-config/lint-default.xml")
 }
 
-internal fun PluginContainer.hasKotlinComposePlugin() = hasPlugin("org.jetbrains.kotlin.plugin.compose")
+internal fun PluginContainer.hasKotlinComposePlugin() =
+  hasPlugin("org.jetbrains.kotlin.plugin.compose")
 
 /**
  * Configure Compose-specific options
@@ -26,7 +27,7 @@ internal fun PluginContainer.hasKotlinComposePlugin() = hasPlugin("org.jetbrains
  */
 fun Project.configureAndroidCompose(
   commonExtension: CommonExtension<*, *, *, *, *>,
-  hasRedwood: Boolean = true
+  hasRedwood: Boolean = true,
 ) {
   if (!plugins.hasKotlinComposePlugin()) {
     pluginManager.apply("org.jetbrains.kotlin.plugin.compose")
