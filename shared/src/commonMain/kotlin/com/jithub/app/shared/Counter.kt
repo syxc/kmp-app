@@ -22,7 +22,7 @@ fun Counter(modifier: Modifier = Modifier, value: Int = 0, labels: StringList? =
     height = Constraint.Fill,
     horizontalAlignment = CrossAxisAlignment.Center,
     verticalAlignment = MainAxisAlignment.Center,
-    modifier = modifier
+    modifier = modifier,
   ) {
     Button("-1", onClick = { count-- })
     Text(text = "${labels?.items?.get(0)} $count")

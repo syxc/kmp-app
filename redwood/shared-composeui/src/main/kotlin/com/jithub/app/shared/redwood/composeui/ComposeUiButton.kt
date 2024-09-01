@@ -22,7 +22,7 @@ internal class ComposeUiButton : Button<@Composable () -> Unit> {
     Button(
       onClick = onClick,
       enabled = isEnabled,
-      modifier = Modifier.fillMaxWidth()
+      modifier = Modifier.fillMaxWidth(),
     ) {
       Text(text)
     }

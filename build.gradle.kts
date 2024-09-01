@@ -46,7 +46,7 @@ allprojects {
 subprojects {
   afterEvaluate {
     tasks.withType<JavaCompile> {
-      dependsOn(tasks.getByName("spotlessApply"))
+      // dependsOn(tasks.getByName("spotlessApply"))
     }
   }
 }

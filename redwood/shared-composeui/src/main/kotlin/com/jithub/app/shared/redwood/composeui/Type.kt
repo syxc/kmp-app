@@ -14,13 +14,13 @@ val AppShapes = Shapes(
   small = RoundedCornerShape(4.dp),
   medium = RoundedCornerShape(8.dp),
   large = RoundedCornerShape(16.dp),
-  extraLarge = RoundedCornerShape(32.dp)
+  extraLarge = RoundedCornerShape(32.dp),
 )
 
 val AppTypography = Typography(
   bodyMedium = TextStyle(
     fontFamily = FontFamily.Default,
     fontWeight = FontWeight.Medium,
-    fontSize = 16.sp
-  )
+    fontSize = 16.sp,
+  ),
 )

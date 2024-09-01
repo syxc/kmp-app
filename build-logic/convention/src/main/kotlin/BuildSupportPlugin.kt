@@ -43,7 +43,7 @@ class BuildSupportPlugin : BasePlugin() {
         }
         targetExclude(
           "**/build/**/*.java",
-          "${rootProject.rootDir}/spotless/**"
+          "${rootProject.rootDir}/spotless/**",
         )
         toggleOffOn("@formatter:off", "@formatter:on")
         importOrder()
@@ -51,7 +51,7 @@ class BuildSupportPlugin : BasePlugin() {
         trimTrailingWhitespace()
         endWithNewline()
         // https://github.com/palantir/palantir-java-format
-        palantirJavaFormat("2.47.0").style("GOOGLE").formatJavadoc(true)
+        palantirJavaFormat("2.50.0").style("GOOGLE").formatJavadoc(true)
         formatAnnotations()
         licenseHeaderFile(rootProject.file("spotless/copyright.txt"))
       }
@@ -68,13 +68,13 @@ class BuildSupportPlugin : BasePlugin() {
           "**/build/**/*.kt",
           "${rootProject.rootDir}/spotless/**",
           "**/src/commonMain/kotlin/Greeting.kt",
-          "**/src/wasmJsMain/kotlin/Platform.wasmJs.kt"
+          "**/src/wasmJsMain/kotlin/Platform.wasmJs.kt",
         )
         ktlint(ktlintVersion).customRuleSets(
           // https://github.com/mrmans0n/compose-rules
-          listOf("io.nlopez.compose.rules:ktlint:0.4.5")
+          listOf("io.nlopez.compose.rules:ktlint:0.4.11"),
         ).setEditorConfigPath(
-          "${rootProject.rootDir}/.editorconfig"
+          "${rootProject.rootDir}/.editorconfig",
         ).editorConfigOverride(
           mapOf(
             "android" to "true",
@@ -84,8 +84,8 @@ class BuildSupportPlugin : BasePlugin() {
             // Making something an expression body should be a choice around readability.
             "ktlint_standard_function-expression-body" to "disabled",
             "ktlint_function_naming_ignore_when_annotated_with" to "Composable",
-            "ktlint_compose_compositionlocal-allowlist" to "disabled"
-          )
+            "ktlint_compose_compositionlocal-allowlist" to "disabled",
+          ),
         )
         licenseHeaderFile(rootProject.file("spotless/copyright.txt"))
       }
@@ -94,7 +94,7 @@ class BuildSupportPlugin : BasePlugin() {
         target("**/*.gradle.kts")
         targetExclude(
           "**/build/**/*.kts",
-          "${rootProject.rootDir}/spotless/**"
+          "${rootProject.rootDir}/spotless/**",
         )
         ktlint(ktlintVersion).setEditorConfigPath("${rootProject.rootDir}/.editorconfig")
         // Look for the first line that doesn't have a block comment (assumed to be the license)
@@ -109,7 +109,7 @@ class BuildSupportPlugin : BasePlugin() {
           "**/.kotlin/**/*.xml",
           "**/build/**/*.xml",
           "**/lint-config/**/*.xml",
-          "${rootProject.rootDir}/spotless/**"
+          "${rootProject.rootDir}/spotless/**",
         )
         indentWithSpaces(2)
         trimTrailingWhitespace()
@@ -166,8 +166,8 @@ class BuildSupportPlugin : BasePlugin() {
                 // Enable experimental compose APIs
                 "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
                 "-opt-in=androidx.lifecycle.compose.ExperimentalLifecycleComposeApi",
-                "-opt-in=androidx.compose.animation.ExperimentalSharedTransitionApi"
-              )
+                "-opt-in=androidx.compose.animation.ExperimentalSharedTransitionApi",
+              ),
             )
 
             jvmTarget.set(Versions.jvmTarget)
@@ -231,8 +231,8 @@ class BuildSupportPlugin : BasePlugin() {
             // https://kotlinlang.org/docs/whatsnew13.html#progressive-mode
             "-progressive",
             // https://kotlinlang.org/docs/multiplatform-expect-actual.html#expected-and-actual-classes
-            "-Xexpect-actual-classes"
-          )
+            "-Xexpect-actual-classes",
+          ),
         )
       }
     }
@@ -241,8 +241,8 @@ class BuildSupportPlugin : BasePlugin() {
       compilerOptions {
         freeCompilerArgs.set(
           freeCompilerArgs.getOrElse(emptyList()) + listOf(
-            "-Xjvm-default=all"
-          )
+            "-Xjvm-default=all",
+          ),
         )
         jvmTarget.set(Versions.jvmTarget)
       }
@@ -266,8 +266,8 @@ class BuildSupportPlugin : BasePlugin() {
             compilerOptions {
               freeCompilerArgs.set(
                 freeCompilerArgs.getOrElse(emptyList()) + listOf(
-                  "-Xjdk-release=${Versions.javaVersion}"
-                )
+                  "-Xjdk-release=${Versions.javaVersion}",
+                ),
               )
             }
           }
@@ -297,8 +297,8 @@ class BuildSupportPlugin : BasePlugin() {
             "-Xklib-enable-signature-clash-checks=false",
             // Translate capturing lambdas into anonymous JS functions rather than hoisting parameters
             // and creating a named sibling function. Only affects targets which produce actual JS.
-            "-Xir-generate-inline-anonymous-functions"
-          )
+            "-Xir-generate-inline-anonymous-functions",
+          ),
         )
       }
     }
