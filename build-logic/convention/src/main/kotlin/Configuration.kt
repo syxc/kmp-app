@@ -14,19 +14,15 @@ object Versions {
   const val versionName = "$majorVersion.$minorVersion.$patchVersion"
   const val versionCode = 2401
 
-  // jvmToolchain
-  // const val jdkVersion = 17
-
-  // starting with AGP 7.4.0 we need to target JVM 11 bytecode
-  val javaVersion = JavaVersion.VERSION_11
-  val jvmTarget = JvmTarget.JVM_11
+  val javaVersion = JavaVersion.VERSION_1_8
+  val jvmTarget = JvmTarget.JVM_1_8
 }
 
 // packaging-resources-excludes
 object Resources {
   val excludes = listOf(
     "DebugProbesKt.bin",
-    "kotlin-tooling-metadata.json",
+    // "kotlin-tooling-metadata.json",
     "kotlin/**",
     // Only exclude *.version files in release mode as debug mode requires these files for layout inspector to work.
     // "META-INF/*.version",
