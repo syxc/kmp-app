@@ -40,7 +40,8 @@ fun Project.configureAndroidCompose(
   }
 
   extensions.configure<ComposeCompilerGradlePluginExtension> {
-    enableStrongSkippingMode.set(true)
+    // Strong skipping mode enabled by default
+    // https://kotlinlang.org/docs/whatsnew2020.html#strong-skipping-mode-enabled-by-default
     reportsDestination.set(layout.buildDirectory.dir("compose_compiler"))
   }
 }

@@ -51,7 +51,7 @@ class BuildSupportPlugin : BasePlugin() {
         trimTrailingWhitespace()
         endWithNewline()
         // https://github.com/palantir/palantir-java-format
-        palantirJavaFormat("2.47.0").style("GOOGLE").formatJavadoc(true)
+        palantirJavaFormat("2.50.0").style("GOOGLE").formatJavadoc(true)
         formatAnnotations()
         licenseHeaderFile(rootProject.file("spotless/copyright.txt"))
       }
@@ -72,7 +72,7 @@ class BuildSupportPlugin : BasePlugin() {
         )
         ktlint(ktlintVersion).customRuleSets(
           // https://github.com/mrmans0n/compose-rules
-          listOf("io.nlopez.compose.rules:ktlint:0.4.5")
+          listOf("io.nlopez.compose.rules:ktlint:0.4.11")
         ).setEditorConfigPath(
           "${rootProject.rootDir}/.editorconfig"
         ).editorConfigOverride(

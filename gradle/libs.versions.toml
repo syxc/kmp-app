@@ -1,9 +1,9 @@
 [versions]
-kotlin = "2.0.0"
+kotlin = "2.0.20"
 agp = "8.2.2"
-redwood = "0.12.0"
+redwood = "0.14.0"
 
-androidx-activityCompose = "1.9.0"
+androidx-activityCompose = "1.9.1"
 androidx-appcompat = "1.7.0"
 androidx-constraintlayout = "2.1.4"
 androidx-core-ktx = "1.13.1"
@@ -29,20 +29,10 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 
 # JetBrains Compose
 # https://github.com/JetBrains/compose-multiplatform
-#jetbrains-compose-compiler = "org.jetbrains.compose.compiler:compiler:1.5.14"
-#jetbrains-compose-gradlePlugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "jbr-compose" }
-#jetbrains-compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "jbr-compose" }
-#jetbrains-compose-runtime-saveable = { module = "org.jetbrains.compose.runtime:runtime-saveable", version.ref = "jbr-compose" }
-#jetbrains-compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "jbr-compose" }
-
 jetbrains-compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "jbr-compose" }
 jetbrains-compose-ui-tooling = { module = "org.jetbrains.compose.ui:ui-tooling", version.ref = "jbr-compose" }
 jetbrains-compose-ui-tooling-preview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "jbr-compose" }
 jetbrains-compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "jbr-compose" }
-
-#jetbrains-compose-material = { module = "org.jetbrains.compose.material:material", version.ref = "jbr-compose" }
-#jetbrains-compose-animation = { module = "org.jetbrains.compose.animation:animation-core", version.ref = "jbr-compose" }
-#jetbrains-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "jbr-compose" }
 
 # Redwood
 # https://github.com/cashapp/redwood
