@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
 
     val widgetSystem = SchemaWidgetSystem(
       Schema = ComposeUiWidgetFactory,
-      RedwoodLayout = ComposeUiRedwoodLayoutWidgetFactory()
+      RedwoodLayout = ComposeUiRedwoodLayoutWidgetFactory(),
     )
 
     setContent {

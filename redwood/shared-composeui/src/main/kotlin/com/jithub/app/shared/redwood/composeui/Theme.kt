@@ -43,7 +43,7 @@ private val lightScheme = lightColorScheme(
   surfaceContainerLow = surfaceContainerLowLight,
   surfaceContainer = surfaceContainerLight,
   surfaceContainerHigh = surfaceContainerHighLight,
-  surfaceContainerHighest = surfaceContainerHighestLight
+  surfaceContainerHighest = surfaceContainerHighestLight,
 )
 
 private val darkScheme = darkColorScheme(
@@ -81,7 +81,7 @@ private val darkScheme = darkColorScheme(
   surfaceContainerLow = surfaceContainerLowDark,
   surfaceContainer = surfaceContainerDark,
   surfaceContainerHigh = surfaceContainerHighDark,
-  surfaceContainerHighest = surfaceContainerHighestDark
+  surfaceContainerHighest = surfaceContainerHighestDark,
 )
 
 @Immutable
@@ -89,7 +89,7 @@ data class ColorFamily(
   val color: Color,
   val onColor: Color,
   val colorContainer: Color,
-  val onColorContainer: Color
+  val onColorContainer: Color,
 )
 
 @Composable
@@ -102,7 +102,7 @@ fun AppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable ()
     colorScheme = colorScheme,
     shapes = AppShapes,
     typography = AppTypography,
-    content = content
+    content = content,
   )
 }
 

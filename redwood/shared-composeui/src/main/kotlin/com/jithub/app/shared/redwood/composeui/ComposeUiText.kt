@@ -15,7 +15,7 @@ internal class ComposeUiText : Text<@Composable () -> Unit> {
 
   override val value = @Composable {
     Text(
-      text = text
+      text = text,
     )
   }
 

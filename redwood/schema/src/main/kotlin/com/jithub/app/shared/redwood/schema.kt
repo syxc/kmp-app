@@ -12,11 +12,11 @@ import app.cash.redwood.schema.Widget
 @Schema(
   [
     Text::class,
-    Button::class
+    Button::class,
   ],
   dependencies = [
-    Dependency(1, RedwoodLayout::class)
-  ]
+    Dependency(1, RedwoodLayout::class),
+  ],
 )
 interface Schema
 
@@ -29,5 +29,5 @@ data class Button(
   @Property(2)
   @Default("true")
   val enabled: Boolean = true,
-  @Property(3) val onClick: (() -> Unit)? = null
+  @Property(3) val onClick: (() -> Unit)? = null,
 )

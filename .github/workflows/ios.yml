@@ -1,10 +1,12 @@
 name: iOS CI
 
 on:
-  pull_request: { }
-  workflow_dispatch: { }
+  pull_request: {}
+  workflow_dispatch: {}
   push:
-    branches: [ 'master' ]
+    branches:
+      - 'master'
+      - 'main'
     tags-ignore:
       - '**'
     paths-ignore:
@@ -19,6 +21,10 @@ on:
       - docs
       - androidApp
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx6g -Dfile.encoding=UTF-8 -Dorg.gradle.daemon=false -Dorg.gradle.vfs.watch=false -Dkotlin.incremental=false"
 
@@ -30,10 +36,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: set up JDK 17
+      - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'corretto'
 
       - name: Grant execute permission for gradlew

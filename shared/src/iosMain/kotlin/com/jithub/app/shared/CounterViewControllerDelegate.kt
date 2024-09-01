@@ -26,8 +26,8 @@ class CounterViewControllerDelegate(root: UIStackView) {
       view = RedwoodUIView(root),
       widgetSystem = SchemaWidgetSystem(
         Schema = IosWidgetFactory,
-        RedwoodLayout = UIViewRedwoodLayoutWidgetFactory()
-      )
+        RedwoodLayout = UIViewRedwoodLayoutWidgetFactory(),
+      ),
     )
 
     val labelCount = MR.strings.label_count.desc().localized()

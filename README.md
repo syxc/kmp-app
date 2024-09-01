@@ -1,8 +1,8 @@
 # kmp-app
 
-![kotlin-version](https://img.shields.io/badge/kotlin-2.0.0-blue)
-[![Android CI](https://github.com/syxc/kmp-app/actions/workflows/android.yml/badge.svg)](https://github.com/syxc/kmp-app/actions/workflows/android.yml)
-[![iOS CI](https://github.com/syxc/kmp-app/actions/workflows/ios.yml/badge.svg)](https://github.com/syxc/kmp-app/actions/workflows/ios.yml)
+![kotlin-version](https://img.shields.io/badge/kotlin-2.0.20-blue)
+[![Android CI](https://github.com/ding1dingx/kmp-app/actions/workflows/android.yml/badge.svg)](https://github.com/ding1dingx/kmp-app/actions/workflows/android.yml)
+[![iOS CI](https://github.com/ding1dingx/kmp-app/actions/workflows/ios.yml/badge.svg)](https://github.com/ding1dingx/kmp-app/actions/workflows/ios.yml)
 
 - [redwood](https://github.com/cashapp/redwood)
 - [moko-resources](https://github.com/icerockdev/moko-resources)
