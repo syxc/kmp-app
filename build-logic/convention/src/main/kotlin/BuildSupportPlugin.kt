@@ -1,5 +1,4 @@
 import com.android.build.api.dsl.LibraryExtension
-import com.android.build.api.dsl.Lint
 import com.android.build.api.variant.AndroidComponentsExtension
 import com.android.build.gradle.BaseExtension
 import com.android.build.gradle.TestExtension
@@ -7,8 +6,7 @@ import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import com.diffplug.gradle.spotless.SpotlessExtension
 import org.gradle.api.Project
 import org.gradle.api.tasks.compile.JavaCompile
-import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.withType
+import org.gradle.kotlin.dsl.the
 import org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
@@ -19,19 +17,23 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 class BuildSupportPlugin : BasePlugin() {
 
-  override fun apply(project: Project) {
-    log("apply target: ${project.displayName}")
+  override fun apply(target: Project) {
+    log("apply target: ${target.displayName}")
 
-    project.group = "com.jithub.app.build-support"
-    project.version = Versions.versionName
+    target.group = "com.jithub.app.build-support"
+    target.version = Versions.versionName
 
-    project.configureCommonSpotless()
-    project.configureCommonAndroid()
-    project.configureCommonKotlin()
-    project.configureCommonCompose()
+    target.configureCommonSpotless()
+    target.configureCommonAndroid()
+    target.configureCommonKotlin()
+    target.configureCommonCompose()
   }
 
   private fun Project.configureCommonSpotless() {
+    val libs by lazy {
+      the<org.gradle.accessors.dm.LibrariesForLibs>()
+    }
+
     plugins.apply("com.diffplug.spotless")
     val spotless = extensions.getByName("spotless") as SpotlessExtension
     spotless.apply {
@@ -51,13 +53,14 @@ class BuildSupportPlugin : BasePlugin() {
         trimTrailingWhitespace()
         endWithNewline()
         // https://github.com/palantir/palantir-java-format
-        palantirJavaFormat("2.50.0").style("GOOGLE").formatJavadoc(true)
+        palantirJavaFormat(
+          libs.palantirJavaFormat.get().version,
+        ).style("GOOGLE").formatJavadoc(true)
         formatAnnotations()
         licenseHeaderFile(rootProject.file("spotless/copyright.txt"))
       }
 
       // https://github.com/pinterest/ktlint
-      val ktlintVersion = "1.3.1"
       kotlin {
         if (path == ":") {
           target("**/*.kt")
@@ -70,9 +73,9 @@ class BuildSupportPlugin : BasePlugin() {
           "**/src/commonMain/kotlin/Greeting.kt",
           "**/src/wasmJsMain/kotlin/Platform.wasmJs.kt",
         )
-        ktlint(ktlintVersion).customRuleSets(
+        ktlint(libs.ktlint.get().version).customRuleSets(
           // https://github.com/mrmans0n/compose-rules
-          listOf("io.nlopez.compose.rules:ktlint:0.4.11"),
+          listOf("io.nlopez.compose.rules:ktlint:${libs.ktlintComposeRules.get().version}"),
         ).setEditorConfigPath(
           "${rootProject.rootDir}/.editorconfig",
         ).editorConfigOverride(
@@ -96,7 +99,9 @@ class BuildSupportPlugin : BasePlugin() {
           "**/build/**/*.kts",
           "${rootProject.rootDir}/spotless/**",
         )
-        ktlint(ktlintVersion).setEditorConfigPath("${rootProject.rootDir}/.editorconfig")
+        ktlint(
+          libs.ktlint.get().version,
+        ).setEditorConfigPath("${rootProject.rootDir}/.editorconfig")
         // Look for the first line that doesn't have a block comment (assumed to be the license)
         licenseHeaderFile(rootProject.file("spotless/copyright.txt"), "(^(?![\\/ ]\\*).*$)")
       }
@@ -176,21 +181,21 @@ class BuildSupportPlugin : BasePlugin() {
 
         with(project) {
           when (android) {
-            is BaseAppModuleExtension -> configure<BaseAppModuleExtension> {
-              lint(lintConfigure())
+            is BaseAppModuleExtension -> {
+              android.lint(lintConfigure())
             }
 
-            is LibraryExtension -> configure<LibraryExtension> {
-              lint(lintConfigure())
+            is LibraryExtension -> {
+              android.lint(lintConfigure())
             }
 
-            is TestExtension -> configure<TestExtension> {
-              lint(lintConfigure())
+            is TestExtension -> {
+              android.lint(lintConfigure())
             }
 
             else -> {
               pluginManager.apply("com.android.lint")
-              configure<Lint>(lintConfigure())
+              apply(lintConfigure())
             }
           }
         }
@@ -219,7 +224,7 @@ class BuildSupportPlugin : BasePlugin() {
     }
   }
 
-  // https://github.com/cashapp/redwood/blob/trunk/build-support/src/main/kotlin/app/cash/redwood/buildsupport/RedwoodBuildPlugin.kt
+  // https://github.com/cashapp/redwood/blob/trunk/build-support
   private fun Project.configureCommonKotlin() {
     tasks.withType(KotlinCompile::class.java).configureEach {
       compilerOptions {
@@ -287,7 +292,7 @@ class BuildSupportPlugin : BasePlugin() {
    * with the project's Kotlin version.
    */
   private fun Project.configureCommonCompose() {
-    tasks.withType<KotlinJsCompile>().configureEach {
+    tasks.withType(KotlinJsCompile::class.java).configureEach {
       compilerOptions {
         freeCompilerArgs.set(
           freeCompilerArgs.getOrElse(emptyList()) + listOf(

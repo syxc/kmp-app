@@ -10,9 +10,9 @@ object Versions {
 
   private const val majorVersion = 0
   private const val minorVersion = 1
-  private const val patchVersion = 0
+  private const val patchVersion = 1
   const val versionName = "$majorVersion.$minorVersion.$patchVersion"
-  const val versionCode = 2401
+  const val versionCode = 2402
 
   val javaVersion = JavaVersion.VERSION_1_8
   val jvmTarget = JvmTarget.JVM_1_8
@@ -21,20 +21,16 @@ object Versions {
 // packaging-resources-excludes
 object Resources {
   val excludes = listOf(
-    "DebugProbesKt.bin",
-    // "kotlin-tooling-metadata.json",
-    "kotlin/**",
-    // Only exclude *.version files in release mode as debug mode requires these files for layout inspector to work.
-    // "META-INF/*.version",
-    "META-INF/{AL2.0,LGPL2.1}",
-    "META-INF/DEPENDENCIES",
-    "META-INF/DEPENDENCIES.txt",
-    "META-INF/NOTICE",
-    "META-INF/NOTICE.txt",
-    "META-INF/LICENSE",
-    "META-INF/LICENSE.txt",
-    "META-INF/INDEX.LIST",
-    "META-INF/*.kotlin_module",
+    "**/kotlin-tooling-metadata.json",
+    "**.properties",
+    "**.bin",
+    "**/*.proto",
+    // https://github.com/Kotlin/kotlinx.coroutines/issues/2023
+    "META-INF/**",
+    "**/attach_hotspot_windows.dll",
+    // ktor
+    // "**/custom.config.conf",
+    // "**/custom.config.yaml",
     // assets/sentry-external-modules.txt
     "**/sentry-external-modules.txt",
   )
