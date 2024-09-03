@@ -21,19 +21,16 @@ object Versions {
 // packaging-resources-excludes
 object Resources {
   val excludes = listOf(
-    "DebugProbesKt.bin",
-    // "kotlin-tooling-metadata.json",
-    "kotlin/**",
-    // "META-INF/*.version",
-    "META-INF/{AL2.0,LGPL2.1}",
-    "META-INF/DEPENDENCIES",
-    "META-INF/DEPENDENCIES.txt",
-    "META-INF/NOTICE",
-    "META-INF/NOTICE.txt",
-    "META-INF/LICENSE",
-    "META-INF/LICENSE.txt",
-    "META-INF/INDEX.LIST",
-    "META-INF/*.kotlin_module",
+    "**/kotlin-tooling-metadata.json",
+    "**.properties",
+    "**.bin",
+    "**/*.proto",
+    // https://github.com/Kotlin/kotlinx.coroutines/issues/2023
+    "META-INF/**",
+    "**/attach_hotspot_windows.dll",
+    // ktor
+    // "**/custom.config.conf",
+    // "**/custom.config.yaml",
     // assets/sentry-external-modules.txt
     "**/sentry-external-modules.txt",
   )
