@@ -33,6 +33,7 @@ dependencies {
   compileOnly(libs.bundles.asm)
   implementation(libs.gradlePlugin.spotless)
   implementation(libs.gradlePlugin.compose.compiler)
+  implementation(files(libs::class.java.superclass.protectionDomain.codeSource.location))
 }
 
 gradlePlugin {
