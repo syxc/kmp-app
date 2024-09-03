@@ -1,5 +1,4 @@
 import com.android.build.api.dsl.LibraryExtension
-import com.android.build.api.dsl.Lint
 import com.android.build.api.variant.AndroidComponentsExtension
 import com.android.build.gradle.BaseExtension
 import com.android.build.gradle.TestExtension
@@ -7,9 +6,7 @@ import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import com.diffplug.gradle.spotless.SpotlessExtension
 import org.gradle.api.Project
 import org.gradle.api.tasks.compile.JavaCompile
-import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.the
-import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
@@ -184,21 +181,21 @@ class BuildSupportPlugin : BasePlugin() {
 
         with(project) {
           when (android) {
-            is BaseAppModuleExtension -> configure<BaseAppModuleExtension> {
-              lint(lintConfigure())
+            is BaseAppModuleExtension -> {
+              android.lint(lintConfigure())
             }
 
-            is LibraryExtension -> configure<LibraryExtension> {
-              lint(lintConfigure())
+            is LibraryExtension -> {
+              android.lint(lintConfigure())
             }
 
-            is TestExtension -> configure<TestExtension> {
-              lint(lintConfigure())
+            is TestExtension -> {
+              android.lint(lintConfigure())
             }
 
             else -> {
               pluginManager.apply("com.android.lint")
-              configure<Lint>(lintConfigure())
+              apply(lintConfigure())
             }
           }
         }
@@ -227,7 +224,7 @@ class BuildSupportPlugin : BasePlugin() {
     }
   }
 
-  // https://github.com/cashapp/redwood/blob/trunk/build-support/src/main/kotlin/app/cash/redwood/buildsupport/RedwoodBuildPlugin.kt
+  // https://github.com/cashapp/redwood/blob/trunk/build-support
   private fun Project.configureCommonKotlin() {
     tasks.withType(KotlinCompile::class.java).configureEach {
       compilerOptions {
@@ -295,7 +292,7 @@ class BuildSupportPlugin : BasePlugin() {
    * with the project's Kotlin version.
    */
   private fun Project.configureCommonCompose() {
-    tasks.withType<KotlinJsCompile>().configureEach {
+    tasks.withType(KotlinJsCompile::class.java).configureEach {
       compilerOptions {
         freeCompilerArgs.set(
           freeCompilerArgs.getOrElse(emptyList()) + listOf(
