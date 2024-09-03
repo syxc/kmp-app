@@ -10,9 +10,9 @@ object Versions {
 
   private const val majorVersion = 0
   private const val minorVersion = 1
-  private const val patchVersion = 0
+  private const val patchVersion = 1
   const val versionName = "$majorVersion.$minorVersion.$patchVersion"
-  const val versionCode = 2401
+  const val versionCode = 2402
 
   val javaVersion = JavaVersion.VERSION_1_8
   val jvmTarget = JvmTarget.JVM_1_8
@@ -24,7 +24,6 @@ object Resources {
     "DebugProbesKt.bin",
     // "kotlin-tooling-metadata.json",
     "kotlin/**",
-    // Only exclude *.version files in release mode as debug mode requires these files for layout inspector to work.
     // "META-INF/*.version",
     "META-INF/{AL2.0,LGPL2.1}",
     "META-INF/DEPENDENCIES",
