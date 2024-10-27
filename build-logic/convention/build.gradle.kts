@@ -10,6 +10,9 @@ repositories {
   mavenCentral()
   gradlePluginPortal()
   google()
+  maven("https://maven.aliyun.com/repository/public")
+  maven("https://maven.aliyun.com/repository/gradle-plugin")
+  maven("https://maven.aliyun.com/repository/google")
 }
 
 group = "com.jithub.app.build-logic"
