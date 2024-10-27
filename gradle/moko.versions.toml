@@ -1,6 +1,6 @@
 [versions]
 # https://repo.maven.apache.org/maven2/dev/icerock/moko/resources/
-resources = "0.24.2"
+resources = "0.24.3"
 
 [plugins]
 

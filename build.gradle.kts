@@ -11,6 +11,9 @@ buildscript {
       }
     }
     gradlePluginPortal()
+    maven("https://maven.aliyun.com/repository/public")
+    maven("https://maven.aliyun.com/repository/google")
+    maven("https://maven.aliyun.com/repository/gradle-plugin")
   }
   dependencies {
     classpath(libs.redwood.gradle.plugin)
@@ -38,6 +41,8 @@ allprojects {
         includeGroupAndSubgroups("com.google")
       }
     }
+    maven("https://maven.aliyun.com/repository/public")
+    maven("https://maven.aliyun.com/repository/google")
     maven("https://jitpack.io")
   }
   apply(plugin = "com.jithub.gradle.build-support")
